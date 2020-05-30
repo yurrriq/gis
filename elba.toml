@@ -1,0 +1,15 @@
+[package]
+name = "yurrriq/gis"
+version = "0.0.1"
+authors = ["Eric Bailey <eric@ericb.me>"]
+repository = "https://github.com/yurrriq/gis"
+license = "MIT"
+
+[dependencies]
+
+[targets.lib]
+path = "src/"
+mods = [
+  "Data.GIS",
+]
+idris_opts = ["-p", "contrib"]
