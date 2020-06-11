@@ -1,0 +1,40 @@
+  
+  [1X1 [33X[0;0YGIS[133X[101X
+  
+  
+  [1X1.1 [33X[0;0YConstructing a GIS[133X[101X
+  
+  [1X1.1-1 GIS[101X
+  
+  [33X[1;0Y[29X[2XGIS[102X( [3XS[103X, [3XIVLS[103X, [3Xint[103X ) [32X operation[133X
+  
+  [33X[0;0YA  Generalized  Interval  System  ([22XGIS[122X) is an ordered triple ([3XS[103X, [3XIVLS[103X, [3Xint[103X),
+  where the space [3XS[103X of the [22XGIS[122X is a set of elements (satisfying [22XIsObject[122X), the
+  set  [3XIVLS[103X  of  intervals  for  the  [22XGIS[122X is a group in the mathematical sense
+  (satisfying  [22XIsGroup[122X),  and  [3Xint[103X  is  a  function  from [3XS[103X x [3XS[103X into [3XIVLS[103X such
+  that...[133X
+  
+  
+  [1X1.2 [33X[0;0YComputing intervals[133X[101X
+  
+  [1X1.2-1 GISInt[101X
+  
+  [33X[1;0Y[29X[2XGISInt[102X( [3XGIS[103X, [3Xs[103X, [3Xt[103X ) [32X operation[133X
+  
+  [33X[0;0Y[22X∀ s, t ∈ S, int(s, t)[122X where [3Xgis[103X [22X= (S, IVLS, int)[122X[133X
+  
+  
+  [1X1.3 [33X[0;0YPredefined GIS[133X[101X
+  
+  [1X1.3-1 PSpace[101X
+  
+  [33X[1;0Y[29X[2XPSpace[102X[32X global variable[133X
+  
+  [33X[0;0Y[22X(Z, (Z,+), int)[122X where [22Xint:Z×Z->Z[122X and [22Xint(s,t) = t-s[122X.[133X
+  
+  [1X1.3-2 PCSpace[101X
+  
+  [33X[1;0Y[29X[2XPCSpace[102X[32X global variable[133X
+  
+  [33X[0;0Y[22X(Z_12, (Z_12,+), int)[122X where [22Xint:Z_12×Z_12->Z_12[122X and [22Xint(s,t) = (t-s)mod 12[122X.[133X
+  

@@ -1,0 +1,596 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/NixOS.org) (preloaded format=pdflatex 2020.6.10)  11 JUN 2020 02:05
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**gis
+(./gis.tex
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-02-25>
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/base/report.cls
+Document Class: report 2019/12/20 v1.4l Standard LaTeX document class
+
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/base/size11.clo
+File: size11.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
+)
+\c@part=\count167
+\c@chapter=\count168
+\c@section=\count169
+\c@subsection=\count170
+\c@subsubsection=\count171
+\c@paragraph=\count172
+\c@subparagraph=\count173
+\c@figure=\count174
+\c@table=\count175
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen134
+)
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks15
+)
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/generic/iftex/iftex.sty
+Package: iftex 2019/11/07 v1.0c TeX engine tests
+))
+\Gm@cnth=\count176
+\Gm@cntv=\count177
+\c@Gm@tempcnt=\count178
+\Gm@bindingoffset=\dimen135
+\Gm@wd@mp=\dimen136
+\Gm@odd@mp=\dimen137
+\Gm@even@mp=\dimen138
+\Gm@layoutwidth=\dimen139
+\Gm@layoutheight=\dimen140
+\Gm@layouthoffset=\dimen141
+\Gm@layoutvoffset=\dimen142
+\Gm@dimlist=\toks16
+)
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks17
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/base/inputenc.sty
+Package: inputenc 2018/08/11 v1.3c Input encoding file
+\inpenc@prehook=\toks18
+\inpenc@posthook=\toks19
+)
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/base/makeidx.sty
+Package: makeidx 2014/09/29 v1.0m Standard LaTeX package
+)
+\@indexfile=\write3
+\openout3 = `gis.idx'.
+
+
+Writing index file gis.idx
+
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/graphics/color.sty
+Package: color 2019/11/23 v1.2a Standard LaTeX Color (DPC)
+
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 147.
+
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2020/01/13 v3.5 verbatim text (tvz,hv)
+\FV@CodeLineNo=\count179
+\FV@InFile=\read2
+\FV@TabBox=\box45
+\c@FancyVerbLine=\count180
+\FV@StepNumber=\count181
+\FV@OutFile=\write4
+)
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/psnfss/mathptmx.sty
+Package: mathptmx 2005/04/12 PSNFSS-v9.2a Times w/ Math, improved (SPQR, WaS) 
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 28.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/ztmcm/m/n on input line 28.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/ztmcm/m/n on input line 28.
+LaTeX Font Info:    Redeclaring symbol font `letters' on input line 29.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/ztmcm/m/it on input line 29.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/ztmcm/m/it on input line 29.
+LaTeX Font Info:    Redeclaring symbol font `symbols' on input line 30.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/ztmcm/m/n on input line 30.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/ztmcm/m/n on input line 30.
+LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 31.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/ztmcm/m/n on input line 31.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/ztmcm/m/n on input line 31.
+\symbold=\mathgroup6
+\symitalic=\mathgroup7
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 34.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/ptm/bx/n on input line 34.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/ptm/bx/n on input line 34.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/ptm/m/it on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/ptm/m/it on input line 35.
+LaTeX Info: Redefining \hbar on input line 50.
+)
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/psnfss/helvet.sty
+Package: helvet 2005/04/12 PSNFSS-v9.2a (WaS) 
+)
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/base/fontenc.sty
+Package: fontenc 2020/02/11 v2.0o Standard LaTeX package
+LaTeX Font Info:    Trying to load font information for T1+ptm on input line 11
+2.
+
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/psnfss/t1ptm.fd
+File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
+))
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/base/textcomp.sty
+Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
+)
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/hyperref/hyperref.sty
+Package: hyperref 2020/01/14 v7.00d Hypertext links for LaTeX
+
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2019/12/15 v1.24 LaTeX kernel commands for general use (HO)
+)
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2019/11/24 v0.31 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/generic/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+)
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+)
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/letltxmacro/letltxmacro.sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+)
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/auxhook/auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+)
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2019/11/29 v3.13 Key value format for package options (HO)
+)
+\@linkdim=\dimen143
+\Hy@linkcounter=\count182
+\Hy@pagecounter=\count183
+
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2020/01/14 v7.00d Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/generic/etexcmds/etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)
+\Hy@SavedSpaceFactor=\count184
+\pdfmajorversion=\count185
+
+
+Package hyperref Warning: Unexpected value for option `pdftex'
+(hyperref)                is ignored on input line 4421.
+
+Package hyperref Info: Option `bookmarks' set `true' on input line 4421.
+
+Package hyperref Warning: Option `a4paper' is no longer used.
+
+Package hyperref Info: Option `colorlinks' set `true' on input line 4421.
+Package hyperref Info: Option `breaklinks' set `true' on input line 4421.
+Package hyperref Info: Hyper figures OFF on input line 4547.
+Package hyperref Info: Link nesting OFF on input line 4552.
+Package hyperref Info: Hyper index ON on input line 4555.
+Package hyperref Info: Plain pages OFF on input line 4562.
+Package hyperref Info: Backreferencing ON on input line 4565.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4800.
+
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/hyperref/backref.sty
+Package: backref 2020/01/14 v1.40 Bibliographical back referencing
+
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
+
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/atveryend/atveryend.sty
+Package: atveryend 2019-12-11 v1.11 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+)
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+86.
+))
+\c@Hy@tempcnt=\count186
+
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/url/url.sty
+\Urlmuskip=\muskip16
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5159.
+\XeTeXLinkMargin=\dimen144
+
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+)
+\Fld@menulength=\count187
+\Field@Width=\dimen145
+\Fld@charsize=\dimen146
+Package hyperref Info: Hyper figures OFF on input line 6430.
+Package hyperref Info: Link nesting OFF on input line 6435.
+Package hyperref Info: Hyper index ON on input line 6438.
+Package hyperref Info: backreferencing ON on input line 6443.
+Package hyperref Info: Link coloring ON on input line 6448.
+Package hyperref Info: Link coloring with OCG OFF on input line 6455.
+Package hyperref Info: PDF/A mode OFF on input line 6460.
+LaTeX Info: Redefining \ref on input line 6500.
+LaTeX Info: Redefining \pageref on input line 6504.
+
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/generic/atbegshi/atbegshi.sty
+Package: atbegshi 2019/12/05 v1.19 At begin shipout hook (HO)
+)
+\Hy@abspage=\count188
+\c@Item=\count189
+\c@Hfootnote=\count190
+)
+Package hyperref Info: Driver: hpdftex.
+
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2020/01/14 v7.00d Hyperref driver for pdfTeX
+\Fld@listcount=\count191
+\c@bookmark@seq@number=\count192
+\Hy@SectionHShift=\skip49
+)
+\pagenrlog=\write5
+\openout5 = `gis.pnr'.
+
+
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/enumitem/enumitem.sty
+Package: enumitem 2019/06/20 v3.9 Customized lists
+\labelindent=\skip50
+\enit@outerparindent=\dimen147
+\enit@toks=\toks20
+\enit@inbox=\box46
+\enit@count@id=\count193
+\enitdp@description=\count194
+)
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/l3backend/l3backend-pdfmode.def
+File: l3backend-pdfmode.def 2020-02-23 L3 backend support: PDF mode
+\l__kernel_color_stack_int=\count195
+\l__pdf_internal_box=\box47
+) (./gis.aux)
+\openout1 = `gis.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(76.82243pt, 443.863pt, 76.82243pt)
+* v-part:(T,H,B)=(105.27519pt, 634.49646pt, 105.27519pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=443.863pt
+* \textheight=634.49646pt
+* \oddsidemargin=4.55244pt
+* \evensidemargin=4.55244pt
+* \topmargin=-3.9948pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=11.0pt
+* \footskip=30.0pt
+* \marginparwidth=50.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count196
+\scratchdimen=\dimen148
+\scratchbox=\box48
+\nofMPsegments=\count197
+\nofMParguments=\count198
+\everyMPshowfont=\toks21
+\MPscratchCnt=\count199
+\MPscratchDim=\dimen149
+\MPnumerator=\count266
+\makeMPintoPDFobject=\count267
+\everyMPtoPDFconversion=\toks22
+)
+\big@size=\dimen150
+\AtBeginShipoutBox=\box49
+Package hyperref Info: Link coloring ON on input line 87.
+
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/hyperref/nameref.sty
+Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
+
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/generic/gettitlestring/gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count268
+)
+LaTeX Info: Redefining \ref on input line 87.
+LaTeX Info: Redefining \pageref on input line 87.
+LaTeX Info: Redefining \nameref on input line 87.
+ (./gis.out) (./gis.out)
+\@outlinefile=\write6
+\openout6 = `gis.out'.
+
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\\' on input line 107.
+
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
+13.
+
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+Underfull \hbox (badness 10000) in paragraph at lines 110--115
+
+ []
+
+[1
+
+{/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf-
+var/fonts/map/pdftex/updmap/pdftex.map}] (./gis.toc
+LaTeX Font Info:    Trying to load font information for OT1+ztmcm on input line
+ 2.
+
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/psnfss/ot1ztmcm.fd
+File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
+)
+LaTeX Font Info:    Trying to load font information for OML+ztmcm on input line
+ 2.
+
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/psnfss/omlztmcm.fd
+File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
+)
+LaTeX Font Info:    Trying to load font information for OMS+ztmcm on input line
+ 2.
+
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/psnfss/omsztmcm.fd
+File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
+)
+LaTeX Font Info:    Trying to load font information for OMX+ztmcm on input line
+ 2.
+
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/psnfss/omxztmcm.fd
+File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
+)
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 2
+.
+
+(/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/
+tex/latex/psnfss/ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 2.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 2.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 2.
+)
+\tf@toc=\write7
+\openout7 = `gis.toc'.
+
+ [2
+
+]
+Chapter 1.
+
+Underfull \hbox (badness 10000) in paragraph at lines 140--143
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 159--162
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 178--181
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 190--193
+
+ []
+
+! Undefined control sequence.
+l.195 ...mathbb{Z}_{12}$ and $int(s,t) = (t-s)\mod
+                                                   12$. }
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[3
+
+
+! Font \csname\endcsname=rsfs10 at 10.95pt not loadable: Metric (TFM) file not 
+found.
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.205 \cleardoublepage
+                      
+I wasn't able to read the size data for this font,
+so I will ignore the font specification.
+[Wizards can fix TFM files using TFtoPL/PLtoTF.]
+You might try inserting a different font spec;
+e.g., type `I\font<same font id>=<substitute font name>'.
+
+] (./gis.ind [4
+
+
+
+])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 216.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 216.
+ (./gis.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 216.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 216.
+Package rerunfilecheck Info: File `gis.out' has not changed.
+(rerunfilecheck)             Checksum: 5A5427D4FFD9AD068D2DEC9F824186E8;268.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 216.
+ ) 
+Here is how much of TeX's memory you used:
+ 7255 strings out of 482438
+ 115589 string characters out of 5938586
+ 367987 words of memory out of 5000000
+ 22388 multiletter control sequences out of 15000+600000
+ 583101 words of font info for 85 fonts, out of 8000000 for 9000
+ 319 hyphenation exceptions out of 8191
+ 47i,5n,37p,642b,353s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texm
+f/fonts/enc/dvips/base/8r.enc} </home/yurrriq/.texlive2019/texmf-var/fonts/pk/l
+jfour/jknappen/ec/ecst1095.600pk> </home/yurrriq/.texlive2019/texmf-var/fonts/p
+k/ljfour/jknappen/ec/ectt1095.600pk> </home/yurrriq/.texlive2019/texmf-var/font
+s/pk/ljfour/jknappen/ec/ectt1000.600pk></nix/store/zli3v5hy5p24kjsx75pxxr0krzjr
+46gh-texlive-combined-2019/share/texmf/fonts/type1/public/amsfonts/cm/cmmi10.pf
+b></nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/texm
+f/fonts/type1/public/amsfonts/cm/cmr10.pfb></nix/store/zli3v5hy5p24kjsx75pxxr0k
+rzjr46gh-texlive-combined-2019/share/texmf/fonts/type1/public/amsfonts/cm/cmsy1
+0.pfb></nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share/
+texmf/fonts/type1/public/amsfonts/symbols/msbm10.pfb></nix/store/zli3v5hy5p24kj
+sx75pxxr0krzjr46gh-texlive-combined-2019/share/texmf/fonts/type1/urw/times/utmb
+8a.pfb></nix/store/zli3v5hy5p24kjsx75pxxr0krzjr46gh-texlive-combined-2019/share
+/texmf/fonts/type1/urw/times/utmr8a.pfb></nix/store/zli3v5hy5p24kjsx75pxxr0krzj
+r46gh-texlive-combined-2019/share/texmf/fonts/type1/urw/times/utmri8a.pfb>
+Output written on gis.pdf (4 pages, 79051 bytes).
+PDF statistics:
+ 160 PDF objects out of 1000 (max. 8388607)
+ 102 compressed objects within 2 object streams
+ 24 named destinations out of 1000 (max. 500000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+
