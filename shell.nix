@@ -19,7 +19,7 @@ pkgs.mkShell {
       })
     ]
   ) ++ (
-    with pythonPackages; [
+    with python3Packages; [
       pre-commit
     ]
   );

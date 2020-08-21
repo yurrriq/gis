@@ -16,11 +16,11 @@
         "description": "A read-only mirror of NixOS/nixpkgs tracking the released channels. Send issues and PRs to",
         "homepage": "https://github.com/NixOS/nixpkgs",
         "owner": "NixOS",
-        "repo": "nixpkgs-channels",
-        "rev": "074c9cbe1cd42301c142401e0604d520bf3dae9f",
-        "sha256": "1q027y218k0riw6gddlnsh2yd2f747fdia4gyh6gd0pnajzxc3px",
+        "repo": "nixpkgs",
+        "rev": "fdc7e050b04fc88951468ff21b019a97b7e6412f",
+        "sha256": "0vq6fqwnzv7qva6vnyv9izg59wppzqa57nmy14rwj22nvphff48r",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs-channels/archive/074c9cbe1cd42301c142401e0604d520bf3dae9f.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/fdc7e050b04fc88951468ff21b019a97b7e6412f.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
