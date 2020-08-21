@@ -23,4 +23,5 @@ pkgs.mkShell {
       pre-commit
     ]
   );
+  GAP_EXECUTABLE = "${pkgs.gap-full}/bin/gap";
 }

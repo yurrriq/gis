@@ -2,7 +2,7 @@
 ;;; For more information see (info "(emacs) Directory Variables")
 
 ((gap-mode
-  (gap-executable . "/nix/store/yphgy175a6123afbdi4rf3kivn2j0y64-gap-4.10.2/bin/gap"))
+  (eval . (setq gap-executable (getenv "GAP_EXECUTABLE"))))
  (idris-mode
   (idris-interpreter-flags "-p" "contrib")
   (idris-interpreter-path . "idris")))
