@@ -12,6 +12,14 @@ InstallMethod( MusicalSpace,
         return space;
     end );
 
+InstallMethod( MusicalSpace,
+    [IsAdditiveGroup, IsObject],
+    function( S, ref )
+        local space;
+        space := rec( Label := { s } -> s - ref );
+        Objectify( TYPE_MUSICAL_SPACE, space );
+        return space;
+    end );
 
 InstallMethod( GIS,
     [IsMusicalSpace, IsGroup, IsFunction],
@@ -45,7 +53,9 @@ InstallMethod( GISInt,
 InstallValue( PitchClasses,
     ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"] );
 
-# InstallValue( PSpace, GIS( Integers, FreeGroup( 1 ), { s, t } -> t - s ) );
+InstallValue( PSpace,
+    GIS( MusicalSpace( Integers, 0 ), FreeGroup( 1 ),
+         { s, t } -> t - s ) );
 
 InstallValue( PCSpace,
     GIS( MusicalSpace( PitchClasses, "C" ), CyclicGroup( IsPermGroup, 12),

@@ -1,8 +1,8 @@
 SetPackageInfo( rec(
     PackageName := "gis",
     Subtitle := "Generalized Interval Systems",
-    Version := "0.0.1",
-    Date := "09/06/2020",
+    Version := "0.0.2",
+    Date := "21/08/2020",
     License := "MIT",
     PackageWWWHome := Concatenation( "https://github.com/yurrriq/",
                                      LowercaseString( ~.PackageName ) ),
@@ -40,12 +40,12 @@ SetPackageInfo( rec(
      a <span class=\"pkgname=\">GAP<\span> implementation of David Lewin's\
      Generalized Interval Systems.",
     PackageDoc := rec(
-        BookName := "GIS",
+        BookName := ~.PackageName,
         ArchiveURLSubset := ["docs"],
         HTMLStart := "docs/chap0.html",
         PDFFile := "docs/manual.pdf",
         SixFile := "docs/manual.six",
-        LongTitle := "Generalized Interval Systems",
+        LongTitle := ~.Subtitle,
     ),
 
     Dependencies := rec(

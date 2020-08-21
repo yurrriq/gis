@@ -10,7 +10,7 @@ BindGlobal( "TYPE_MUSICAL_SPACE",
     NewType( MusicalSpaceFamily, IsMusicalSpace ) );
 
 DeclareOperation( "MusicalSpace", [IsList, IsObject]);
-DeclareOperation( "MusicalSpace", [IsCollection, IsObject]);
+DeclareOperation( "MusicalSpace", [IsAdditiveGroup, IsObject]);
 
 
 DeclareCategory("IsGIS", IsObject );
