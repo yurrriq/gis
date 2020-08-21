@@ -1,6 +1,16 @@
 LoadPackage( "AutoDoc" );
-AutoDoc( rec( autodoc := true,
-              dir := "docs",
-              scaffold := true ) );
+AutoDoc(rec(
+    gapdoc := rec(
+        LaTeXOptions := rec(
+            LateExtraPreamble := """
+            \usepackage{amsmath}
+            \usepackage[T1]{fontenc}
+            """
+        ),
+    ),
+    autodoc := true,
+    dir := "docs",
+    scaffold := true
+));
 
 QUIT;

@@ -4,10 +4,10 @@
 <!DOCTYPE Book SYSTEM "gapdoc.dtd"
 [
 <!ENTITY see '<Alt Only="LaTeX">$	o$</Alt><Alt Not="LaTeX">--&gt;</Alt>'>
-<!ENTITY GIS '<Package>GIS</Package>'>
+<!ENTITY gis '<Package>gis</Package>'>
 ]
 >
-<Book Name="GIS">
+<Book Name="gis">
 <#Include SYSTEM "title.xml">
 <TableOfContents/>
 <Body>

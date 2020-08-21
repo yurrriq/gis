@@ -15,7 +15,8 @@ pkgs.mkShell {
       (texlive.combine {
         inherit (texlive) scheme-small
           enumitem
-          latexmk;
+          latexmk
+          rsfs;
       })
     ]
   ) ++ (

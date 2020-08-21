@@ -6,10 +6,10 @@
                          [1X Generalized Interval Systems [101X
   
   
-                                     0.0.1
+                                     0.0.2
   
   
-                                  9 June 2020
+                                 21 August 2020
   
   
                                   Eric Bailey
@@ -23,7 +23,7 @@
   -------------------------------------------------------
   
   
-  [1XContents (GIS)[101X
+  [1XContents (gis)[101X
   
   1 [33X[0;0YGIS[133X
     1.1 [33X[0;0YConstructing a GIS[133X
