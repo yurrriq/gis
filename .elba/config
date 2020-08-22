@@ -1,0 +1,4 @@
+[directories]
+bin = ".elba/bin"
+cache = ".elba/cache"
+data = ".elba/data"

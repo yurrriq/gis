@@ -4,14 +4,9 @@ pkgs.mkShell {
   buildInputs = with pkgs; (
     [
       cargo
-      elba
       gap-full
       git
       gnumake
-      (with idrisPackages; with-packages [
-        contrib
-        specdris
-      ])
       nixpkgs-fmt
       niv
       rlwrap
@@ -26,5 +21,5 @@ pkgs.mkShell {
     with python3Packages; [
       pre-commit
     ]
-  );
+  ) ++ (import ./. { inherit pkgs; }).idris.nativeBuildInputs;
 }
