@@ -14,6 +14,7 @@ gap-docs: makedoc.g ${srcs}
 
 idris-check: $(shell find {src,test} -name '*.idr')
 	idris --execute -isrc -itest -p contrib -p specdris test/Data/GIS/Test.idr
+	idris --execute -isrc -itest -p contrib -p specdris test/Data/Music/Test.idr
 
 .PHONY: update
 niv-update: package ?= nixpkgs

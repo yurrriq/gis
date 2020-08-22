@@ -1,6 +1,6 @@
 [package]
 name = "yurrriq/gis"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Eric Bailey <eric@ericb.me>"]
 repository = "https://github.com/yurrriq/gis"
 # TODO: readme = "README.md"
@@ -23,4 +23,9 @@ idris_opts = ["-p", "contrib"]
 [[targets.test]]
 path = "test/"
 main = "Data.GIS.Test.runTests"
+idris_opts = ["-p", "specdris"]
+
+[[targets.test]]
+path = "test/"
+main = "Data.Music.Test.runTests"
 idris_opts = ["-p", "specdris"]
