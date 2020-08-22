@@ -1,4 +1,4 @@
 [[packages]]
-id = 'yurrriq/gis@dir+/home/e.bailey/src/github.com/yurrriq/gis'
-version = '0.0.1'
+id = 'yurrriq/gis@dir+/home/yurrriq/src/github.com/yurrriq/gis'
+version = '0.1.0'
 dependencies = []

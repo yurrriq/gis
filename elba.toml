@@ -1,15 +1,26 @@
 [package]
 name = "yurrriq/gis"
-version = "0.0.1"
+version = "0.1.0"
 authors = ["Eric Bailey <eric@ericb.me>"]
 repository = "https://github.com/yurrriq/gis"
+# TODO: readme = "README.md"
 license = "MIT"
 
-[dependencies]
+# [dev_dependencies]
+# [dev_dependencies."pheymann/specdris"]
+# git = "https://github.com/pheymann/specdris"
+# tag = "v0.3.1"
 
 [targets.lib]
 path = "src/"
 mods = [
   "Data.GIS",
+  "Data.Int.Algebra",
+  "Data.Music",
 ]
 idris_opts = ["-p", "contrib"]
+
+[[targets.test]]
+path = "test/"
+main = "Data.GIS.Test.runTests"
+idris_opts = ["-p", "specdris"]
