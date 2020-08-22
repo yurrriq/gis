@@ -2,7 +2,7 @@
 
 assert !stdenv.targetPlatform.isMusl;
 
-stdenv.mkDerivation  rec {
+stdenv.mkDerivation rec {
   pname = "elba";
   version = "0.3.3";
 
@@ -21,17 +21,19 @@ stdenv.mkDerivation  rec {
     install -m755 elba "$_"
   '';
 
-  preFixup = let
-    libPath = stdenv.lib.makeLibraryPath [
-      glibc
-      zlib
-    ];
-  in ''
-    patchelf \
-      --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
-      --set-rpath "${libPath}" \
-      $out/bin/elba
-  '';
+  preFixup =
+    let
+      libPath = stdenv.lib.makeLibraryPath [
+        glibc
+        zlib
+      ];
+    in
+    ''
+      patchelf \
+        --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
+        --set-rpath "${libPath}" \
+        $out/bin/elba
+    '';
 
   meta = with stdenv.lib; {
     description = "A package manager for Idris";
