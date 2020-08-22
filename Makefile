@@ -12,7 +12,6 @@ gap-check: ${srcs}
 gap-docs: makedoc.g ${srcs}
 	gap --nointeract -b $<
 
-
 .PHONY: update
 niv-update: package ?= nixpkgs
 niv-update: sources := nix/sources.json
