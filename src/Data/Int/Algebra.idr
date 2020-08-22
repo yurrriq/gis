@@ -47,14 +47,18 @@ implementation DecEq (Zn n) where
 Show (Zn n) where
   show (MkZn x) = show (x `mod` 12)
 
+-- ||| Return the smallest positive representative of the class of i modulo k.
+mod' : (Integral a, Ord a) => (i : a) -> (k : a) -> a
+mod' i k = let r = i `mod` k in if r < 0 then r + k else r
+
 Num (Zn n) where
-  fromInteger x = MkZn $ fromInteger x `mod` fromNat n
-  (MkZn x) + (MkZn y) = MkZn $ (fromNat n + x + y) `mod` fromNat n
-  (MkZn x) * (MkZn y) = MkZn $ ((fromNat n + x) * (fromNat n + y)) `mod` fromNat n
+  fromInteger x = MkZn $ fromInteger x `mod'` fromNat n
+  (MkZn x) + (MkZn y) = MkZn $ x + y `mod'` fromNat n
+  (MkZn x) * (MkZn y) = MkZn $ x * y `mod'` fromNat n
 
 Neg (Zn n) where
-  negate (MkZn x) = MkZn $ fromNat n + negate x `mod` fromNat n
-  (MkZn x) - (MkZn y) = MkZn $ (fromNat n + x - y) `mod` fromNat n
+  negate (MkZn x) = MkZn $ fromNat n + negate x `mod'` fromNat n
+  (MkZn x) - (MkZn y) = MkZn $ x - y `mod'` fromNat n
 
 [PlusZnSemi] Semigroup (Zn n) where
   x <+> y = x + y
