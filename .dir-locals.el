@@ -2,7 +2,7 @@
 ;;; For more information see (info "(emacs) Directory Variables")
 
 ((gap-mode
-  (eval . (setq gap-executable (getenv "GAP_EXECUTABLE"))))
+  (gap-executable . "gap"))
  (idris-mode
   (idris-interpreter-flags "-p" "contrib")
   (idris-interpreter-path . "idris")))

@@ -1,4 +1,4 @@
-srcs := \
+gap-srcs := \
 	PackageInfo.g \
 	init.g \
 	lib/gis.gd \
@@ -6,10 +6,10 @@ srcs := \
 	makedoc.g \
 	read.g
 
-check: ${srcs}
+gap-check: ${srcs}
 	gap --nointeract -l ";." -q tst/testall.g
 
-docs: makedoc.g ${srcs}
+gap-docs: makedoc.g ${srcs}
 	gap --nointeract -b $<
 
 
