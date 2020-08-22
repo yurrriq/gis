@@ -19,6 +19,6 @@ pcSpaceExamples =
 runTests : IO ()
 runTests = spec pcSpaceExamples
 
--- namespace Main
---   main : IO ()
---   main = runTests
+namespace Main
+  main : IO ()
+  main = runTests
