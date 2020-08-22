@@ -3,7 +3,7 @@
 /* this file contains two functions:
    mergeSideTOCHooks:  this changes div.ContSect elements to the class
                        ContSectClosed and includes a hook to toggle between
-                       ContSectClosed and ContSectOpen. 
+                       ContSectClosed and ContSectOpen.
    openclosetoc:       this function does the toggling, the rest is done by
                        CSS
 */
@@ -43,7 +43,7 @@ function mergeSideTOCHooks() {
 function openclosetoc (event) {
   /* first two steps to make it work in most browsers */
   var evt=window.event || event;
-  if (!evt.target) 
+  if (!evt.target)
     evt.target=evt.srcElement;
 
   var markClosed = document.createTextNode(closedTOCMarker);
@@ -62,4 +62,3 @@ function openclosetoc (event) {
 
 /* adjust jscontent which is called onload */
 jscontentfuncs.push(mergeSideTOCHooks);
-

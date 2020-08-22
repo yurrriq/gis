@@ -1,7 +1,7 @@
 /* leftmenu.css                                              Frank Lübeck */
 /* Change default CSS to show section menu on left side */
 
-body { 
+body {
   padding-left: 28%;
 }
 body.chap0 {
@@ -9,9 +9,8 @@ body.chap0 {
 }
 div.ChapSects div.ContSect:hover div.ContSSBlock {
   left: 15%;
-} 
+}
 div.ChapSects {
   left: 1%;
   width: 25%;
 }
-

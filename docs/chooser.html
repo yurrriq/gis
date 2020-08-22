@@ -25,7 +25,7 @@ function currval(nam) {
 
 <!-- find style from current values in form -->
 function getstyle() {
-  var choices = ["toggle","colorprompt","tocside","font","justify"]; 
+  var choices = ["toggle","colorprompt","tocside","font","justify"];
   var style = "";
   for (var i=0; choices.length > i; i++) {
     var a = currval(choices[i]);
@@ -61,7 +61,7 @@ function initform() {
     for (var i=0; chform.length > i; i++) {
       if (chform[i].type == "radio") {
         for (var j=0; stlist.length > j; j++) {
-          if (chform[i].value == stlist[j]) 
+          if (chform[i].value == stlist[j])
             chform[i].checked = true;
         }
       }
@@ -77,47 +77,47 @@ function initform() {
 
 <form name="SetGAPDocHTMLStyle" action="">
 <p>
-<input name="reset" type="reset" value="Reset to defaults" 
+<input name="reset" type="reset" value="Reset to defaults"
 onclick="javascript:resetf()"/>
 </p>
 <p>
-Unfold subsections in menus only by mouse clicks: 
+Unfold subsections in menus only by mouse clicks:
 <input type="radio" name="toggle" value="" checked="checked"
-onclick="javascript:f()"/> no (default) 
+onclick="javascript:f()"/> no (default)
 &nbsp;&nbsp;&nbsp;
 <input type="radio" name="toggle" value="toggless"
-onclick="javascript:f()"/> yes 
+onclick="javascript:f()"/> yes
 </p>
 <p>
-Show GAP examples as in sessions with <code>ColorPrompt(true)</code>: 
+Show GAP examples as in sessions with <code>ColorPrompt(true)</code>:
 <input type="radio" name="colorprompt" value="" checked="checked"
-onclick="javascript:f()"/> yes 
+onclick="javascript:f()"/> yes
 (default) &nbsp;&nbsp;&nbsp;
 <input type="radio" name="colorprompt" value="nocolorprompt"
-onclick="javascript:f()"/> no 
+onclick="javascript:f()"/> no
 </p>
 <p>
-Display side of table of contents within chapters: 
+Display side of table of contents within chapters:
 <input type="radio" name="tocside" value="" checked="checked"
 onclick="javascript:f()"/> right (default) &nbsp;&nbsp;&nbsp;
 <input type="radio" name="tocside" value="lefttoc"
-onclick="javascript:f()"/> left 
+onclick="javascript:f()"/> left
 </p>
 <p>
-Main document font: 
+Main document font:
 <input type="radio" name="font" value="" checked="checked"
-onclick="javascript:f()"/> Helvetica/sans 
+onclick="javascript:f()"/> Helvetica/sans
 serif (default) &nbsp;&nbsp;&nbsp;
 <input type="radio" name="font" value="times"
 onclick="javascript:f()"/> Times/serif
 </p>
 <p>
-Paragraph formatting: 
+Paragraph formatting:
 <input type="radio" name="justify" value="" checked="checked"
-onclick="javascript:f()"/> left-right 
+onclick="javascript:f()"/> left-right
 justified (default) &nbsp;&nbsp;&nbsp;
 <input type="radio" name="justify" value="ragged"
-onclick="javascript:f()"/> ragged right 
+onclick="javascript:f()"/> ragged right
 </p>
 </form>
 <p>

@@ -8,23 +8,23 @@
 
    A style with name mystyle can be added by providing two files (or only
    one of them).
-     mystyle.js:   Additional javascript code for the style, it is 
+     mystyle.js:   Additional javascript code for the style, it is
                    read in the HTML pages after this current file.
-                   The additional code may adjust the preprocessing function 
+                   The additional code may adjust the preprocessing function
                    jscontent() with is called onload of a file. This
                    is done by appending functions to jscontentfuncs
                    (jscontentfuncs.push(newfunc);).
                    Make sure, that your style is still usable without
                    javascript.
-     mystyle.css:  CSS configuration, read after manual.css (so it can 
+     mystyle.css:  CSS configuration, read after manual.css (so it can
                    just reconfigure a few details, or overwrite everything).
 
   Then adjust chooser.html such that users can switch on and off mystyle.
- 
+
   A user can change the preferred style permanently by using the [Style]
   link and choosing one. Or one can append '?GAPDocStyle=mystyle' to the URL
   when loading any file of the manual (so the style can be configured in
-  the GAP user preferences). 
+  the GAP user preferences).
 
 */
 
@@ -93,7 +93,7 @@ function addStyleLink() {
     }
   }
   back = back+window.location.pathname;
-  oncl.nodeValue = "chooser.html?BACK="+back; 
+  oncl.nodeValue = "chooser.html?BACK="+back;
   el.setAttributeNode(oncl);
   var cont = document.createTextNode(" [Style]");
   el.appendChild(cont);
@@ -109,4 +109,3 @@ function jscontent () {
   for (var i=0; i < jscontentfuncs.length; i++)
     jscontentfuncs[i]();
 }
-

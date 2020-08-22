@@ -2,10 +2,10 @@
 /* This is the default CSS style sheet for GAPDoc HTML manuals.        */
 
 /* basic settings, fonts, sizes, colors, ... */
-body { 
+body {
   position: relative;
-  background: #ffffff; 
-  color: #000000; 
+  background: #ffffff;
+  color: #000000;
   width: 70%;
   margin: 0pt;
   padding: 15pt;
@@ -36,31 +36,31 @@ p.foot {
   font-style: normal;
 }
 
-a:link { 
-  color: #00008e; 
-  text-decoration: none; 
+a:link {
+  color: #00008e;
+  text-decoration: none;
 }
-a:visited { 
-  color: #00008e; 
-  text-decoration: none; 
+a:visited {
+  color: #00008e;
+  text-decoration: none;
 }
-a:active { 
-  color: #000000; 
-  text-decoration: none; 
+a:active {
+  color: #000000;
+  text-decoration: none;
 }
 a:hover {
   background: #eeeeee;
 }
 
-pre { 
-  font-family: "Courier New",Courier,monospace; 
-  font-size: 100%; 
-  color:#111111; 
+pre {
+  font-family: "Courier New",Courier,monospace;
+  font-size: 100%;
+  color:#111111;
 }
 
-tt,code { 
-  font-family: "Courier New",Courier,monospace; 
-  font-size: 110%; 
+tt,code {
+  font-family: "Courier New",Courier,monospace;
+  font-size: 110%;
   color: #000000; }
 
 var {
@@ -81,8 +81,8 @@ var {
 
 /* layout for the definitions of functions, variables, ...  */
 div.func {
-  background: #e0e0e0; 
-  margin: 0pt 0pt; 
+  background: #e0e0e0;
+  margin: 0pt 0pt;
 }
 
 
@@ -95,15 +95,15 @@ table {
 
 td, th {
   border-style: none;
-} 
+}
 
-table.func { 
-  padding: 0pt 1ex; 
+table.func {
+  padding: 0pt 1ex;
   margin-left: 1ex;
   margin-right: 1ex;
   background: transparent;
-  /* line-height: 1.1; */ 
-  width: 100%; 
+  /* line-height: 1.1; */
+  width: 100%;
 }
 
 table.func td.tdright {
@@ -112,10 +112,10 @@ table.func td.tdright {
 
 /* Example elements (for old converted manuals, now in div+pre */
 table.example {
-  background: #efefef; 
-  border-style: none; 
-  border-width: 0pt; 
-  padding: 0px;  
+  background: #efefef;
+  border-style: none;
+  border-width: 0pt;
+  padding: 0px;
   width: 100%
 }
 table.example td {
@@ -134,9 +134,9 @@ div.example {
 /* Links to chapters in all files at top and bottom. */
 /* If there are too many chapters then use 'display: none' here. */
 div.chlinktop {
-  background: #dddddd; 
-  border-style: solid; 
-  border-width: thin;  
+  background: #dddddd;
+  border-style: solid;
+  border-width: thin;
   margin: 2px;
   text-align: center;
 }
@@ -149,9 +149,9 @@ div.chlinktop a:hover {
 }
 
 div.chlinkbot {
-  background: #dddddd; 
-  border-style: solid; 
-  border-width: thin;  
+  background: #dddddd;
+  border-style: solid;
+  border-width: thin;
   margin: 2px;
   text-align: center;
   /* width: 100%;  */
@@ -166,9 +166,9 @@ span.chlink1 {
 
 /* and this is for  the "Top", "Prev", "Next" links */
 div.chlinkprevnexttop {
-  background: #dddddd; 
-  border-style: solid; 
-  border-width: thin;  
+  background: #dddddd;
+  border-style: solid;
+  border-width: thin;
   text-align: center;
   margin: 2px;
 }
@@ -178,9 +178,9 @@ div.chlinkprevnexttop a:hover {
 }
 
 div.chlinkprevnextbot {
-  background: #dddddd; 
-  border-style: solid; 
-  border-width: thin;  
+  background: #dddddd;
+  border-style: solid;
+  border-width: thin;
   text-align: center;
   margin: 2px;
 }
@@ -247,8 +247,8 @@ div.ChapSects div.ContSect:hover div.ContSSBlock {
   display: block;
   position: fixed;
   background: #eeeeee;
-  border-style: solid; 
-  border-width: 1px 2px 2px 1px;  
+  border-style: solid;
+  border-width: 1px 2px 2px 1px;
   border-color: #666666;
   padding-left: 0ex;
   padding-right: 0.5ex;
@@ -476,7 +476,3 @@ span.BibNote {
 }
 span.BibHowpublished {
 }
-
-
-
-

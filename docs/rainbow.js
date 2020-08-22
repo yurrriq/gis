@@ -3,7 +3,7 @@ function randchar(str) {
   var i = Math.floor(Math.random() * str.length);
   while (i == str.length)
     i = Math.floor(Math.random() * str.length);
-  return str[i]; 
+  return str[i];
 }
 
 hexdigits = "0123456789abcdef";
@@ -55,6 +55,3 @@ document.write('span.Bib_key {\n  color: #'+randdark()+';\n}\n');
 document.write('i.Bib_title {\n  color: #'+randdark()+';\n}\n');
 
 document.write('-->\n</style>\n');
-
-
-
