@@ -6,7 +6,6 @@ import Data.Int.Algebra
 import Data.Music
 
 %access public export
-%default partial
 
 interface Group ivls => HasLabel s ivls where
   LABEL : s -> ivls

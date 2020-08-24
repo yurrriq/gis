@@ -4,7 +4,6 @@ import Control.Algebra
 import Interfaces.Verified
 
 %access public export
-%default total
 
 [PlusIntSemi] Semigroup Int where
   x <+> y = x + y
@@ -41,8 +40,6 @@ implementation DecEq (Zn n) where
       primitiveEq = really_believe_me (Refl {x})
       primitiveNotEq : x = y -> Void
       primitiveNotEq prf = believe_me {b = Void} ()
-
-%default partial
 
 Show (Zn n) where
   show (MkZn x) = show (x `mod` 12)

@@ -3,7 +3,6 @@ module Data.Music
 import Data.Combinators
 
 %access public export
-%default total
 
 data PitchClass
   = C
