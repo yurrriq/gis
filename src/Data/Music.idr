@@ -85,19 +85,7 @@ Show PitchClass where
   show B   = "B"
 
 Eq PitchClass where
-  C   == C   = True
-  Cis == Cis = True
-  D   == D   = True
-  Dis == Dis = True
-  E   == E   = True
-  F   == F   = True
-  Fis == Fis = True
-  G   == G   = True
-  Gis == Gis = True
-  A   == A   = True
-  Ais == Ais = True
-  B   == B   = True
-  _   == _   = False
+  (==) = (==) `on` toNat
 
 Ord PitchClass where
   compare = compare `on` toNat
