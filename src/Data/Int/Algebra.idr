@@ -29,11 +29,11 @@ data Zn : (n : Nat) -> Type where
 Eq (Zn n) where
   (MkZn x) == (MkZn y) = x == y
 
-implementation DecEq (Zn n) where
+DecEq (Zn n) where
   decEq x y =
       case x == y of
-      True => Yes primitiveEq
-      False => No primitiveNotEq
+        True => Yes primitiveEq
+        False => No primitiveNotEq
     where
       primitiveEq : x = y
       primitiveEq = really_believe_me (Refl {x})
