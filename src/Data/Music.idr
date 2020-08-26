@@ -1,122 +1,172 @@
 module Data.Music
 
 import Data.Combinators
+import Data.Int.Algebra
 
 %access public export
-
-data PitchClass
-  = C
-  | Cis
-  | D
-  | Dis
-  | E
-  | F
-  | Fis
-  | G
-  | Gis
-  | A
-  | Ais
-  | B
-
-Enum PitchClass where
-  pred D   = Cis
-  pred Dis = D
-  pred E   = Dis
-  pred F   = E
-  pred Fis = F
-  pred G   = Fis
-  pred Gis = G
-  pred A   = Gis
-  pred Ais = A
-  pred B   = Ais
-  pred _   = C
-
-  succ C   = Cis
-  succ Cis = D
-  succ D   = Dis
-  succ Dis = E
-  succ E   = F
-  succ F   = Fis
-  succ Fis = G
-  succ G   = Gis
-  succ Gis = A
-  succ A   = Ais
-  succ _   = B
-
-  toNat C   = 0
-  toNat Cis = 1
-  toNat D   = 2
-  toNat Dis = 3
-  toNat E   = 4
-  toNat F   = 5
-  toNat Fis = 6
-  toNat G   = 7
-  toNat Gis = 8
-  toNat A   = 9
-  toNat Ais = 10
-  toNat B   = 11
-
-  fromNat Z                                         = C
-  fromNat (S Z)                                     = Cis
-  fromNat (S (S Z))                                 = D
-  fromNat (S (S (S Z)))                             = Dis
-  fromNat (S (S (S (S Z))))                         = E
-  fromNat (S (S (S (S (S Z)))))                     = F
-  fromNat (S (S (S (S (S (S Z))))))                 = Fis
-  fromNat (S (S (S (S (S (S (S Z)))))))             = G
-  fromNat (S (S (S (S (S (S (S (S Z))))))))         = Gis
-  fromNat (S (S (S (S (S (S (S (S (S Z)))))))))     = A
-  fromNat (S (S (S (S (S (S (S (S (S (S Z)))))))))) = Ais
-  fromNat _                                         = B
-
-Show PitchClass where
-  show C   = "C"
-  show Cis = "Cis"
-  show D   = "D"
-  show Dis = "Dis"
-  show E   = "E"
-  show F   = "F"
-  show Fis = "Fis"
-  show G   = "G"
-  show Gis = "Gis"
-  show A   = "A"
-  show Ais = "Ais"
-  show B   = "B"
-
-Eq PitchClass where
-  (==) = (==) `on` toNat
-
-Ord PitchClass where
-  compare = compare `on` toNat
-
-Cast PitchClass Int where
-  cast = fromNat . toNat
-
-isDiatonic : PitchClass -> Bool
-isDiatonic Cis = False
-isDiatonic Dis = False
-isDiatonic Fis = False
-isDiatonic Gis = False
-isDiatonic Ais = False
-isDiatonic _   = True
 
 Octave : Type
 Octave = Int
 
-Pitch : Type
-Pitch = Pair PitchClass Octave
+namespace Chromatic
+  data PitchClass
+    = C
+    | Cis
+    | D
+    | Dis
+    | E
+    | F
+    | Fis
+    | G
+    | Gis
+    | A
+    | Ais
+    | B
 
-Cast Pitch PitchClass where
-  cast = fst
+  [PitchClassRefC] Enum PitchClass where
+    pred C   = B
+    pred Cis = C
+    pred D   = Cis
+    pred Dis = D
+    pred E   = Dis
+    pred F   = E
+    pred Fis = F
+    pred G   = Fis
+    pred Gis = G
+    pred A   = Gis
+    pred Ais = A
+    pred B   = Ais
 
-[PitchOrd] Ord Pitch where
-  compare (pc1, oct1) (pc2, oct2) =
-    case compare oct1 oct2 of
-      EQ => compare pc1 pc2
-      res => res
+    succ C   = Cis
+    succ Cis = D
+    succ D   = Dis
+    succ Dis = E
+    succ E   = F
+    succ F   = Fis
+    succ Fis = G
+    succ G   = Gis
+    succ Gis = A
+    succ A   = Ais
+    succ Ais = B
+    succ B   = C
 
-[PitchShow] Show Pitch where
-  show (pc, octave) = show pc ++ show octave
+    toNat C   = 0
+    toNat Cis = 1
+    toNat D   = 2
+    toNat Dis = 3
+    toNat E   = 4
+    toNat F   = 5
+    toNat Fis = 6
+    toNat G   = 7
+    toNat Gis = 8
+    toNat A   = 9
+    toNat Ais = 10
+    toNat B   = 11
+
+    fromNat Z = C
+    fromNat (S k) = succ (fromNat k)
+
+  [PitchClassRefCis] Enum PitchClass where
+    pred = pred@{PitchClassRefC}
+    succ = succ@{PitchClassRefC}
+    toNat = Nat.pred . toNat@{PitchClassRefC}
+    fromNat = fromNat@{PitchClassRefC} . succ
+
+  [PitchClassRefD] Enum PitchClass where
+    pred = pred@{PitchClassRefCis}
+    succ = succ@{PitchClassRefCis}
+    toNat = Nat.pred . toNat@{PitchClassRefCis}
+    fromNat = fromNat@{PitchClassRefCis} . succ
+
+  [PitchClassRefDis] Enum PitchClass where
+    pred = pred@{PitchClassRefD}
+    succ = succ@{PitchClassRefD}
+    toNat = Nat.pred . toNat@{PitchClassRefD}
+    fromNat = fromNat@{PitchClassRefD} . succ
+
+  [PitchClassRefE] Enum PitchClass where
+    pred = pred@{PitchClassRefDis}
+    succ = succ@{PitchClassRefDis}
+    toNat = Nat.pred . toNat@{PitchClassRefDis}
+    fromNat = fromNat@{PitchClassRefDis} . succ
+
+  [PitchClassRefF] Enum PitchClass where
+    pred = pred@{PitchClassRefE}
+    succ = succ@{PitchClassRefE}
+    toNat = Nat.pred . toNat@{PitchClassRefE}
+    fromNat = fromNat@{PitchClassRefE} . succ
+
+  [PitchClassRefFis] Enum PitchClass where
+    pred = pred@{PitchClassRefF}
+    succ = succ@{PitchClassRefF}
+    toNat = Nat.pred . toNat@{PitchClassRefF}
+    fromNat = fromNat@{PitchClassRefF} . succ
+
+  [PitchClassRefG] Enum PitchClass where
+    pred = pred@{PitchClassRefFis}
+    succ = succ@{PitchClassRefFis}
+    toNat = Nat.pred . toNat@{PitchClassRefFis}
+    fromNat = fromNat@{PitchClassRefFis} . succ
+
+  [PitchClassRefGis] Enum PitchClass where
+    pred = pred@{PitchClassRefG}
+    succ = succ@{PitchClassRefG}
+    toNat = Nat.pred . toNat@{PitchClassRefG}
+    fromNat = fromNat@{PitchClassRefG} . succ
+
+  [PitchClassRefA] Enum PitchClass where
+    pred = pred@{PitchClassRefGis}
+    succ = succ@{PitchClassRefGis}
+    toNat = Nat.pred . toNat@{PitchClassRefGis}
+    fromNat = fromNat@{PitchClassRefGis} . succ
+
+  [PitchClassRefAis] Enum PitchClass where
+    pred = pred@{PitchClassRefA}
+    succ = succ@{PitchClassRefA}
+    toNat = Nat.pred . toNat@{PitchClassRefA}
+    fromNat = fromNat@{PitchClassRefA} . succ
+
+  [PitchClassRefB] Enum PitchClass where
+    pred = pred@{PitchClassRefAis}
+    succ = succ@{PitchClassRefAis}
+    toNat = Nat.pred . toNat@{PitchClassRefAis}
+    fromNat = fromNat@{PitchClassRefAis} . succ
+
+  Eq PitchClass using PitchClassRefC where
+    (==) = (==) `on` toNat
+
+  Ord PitchClass using PitchClassRefC where
+    compare = compare `on` toNat
+
+  Show PitchClass where
+    show C   = "C"
+    show Cis = "Cis"
+    show D   = "D"
+    show Dis = "Dis"
+    show E   = "E"
+    show F   = "F"
+    show Fis = "Fis"
+    show G   = "G"
+    show Gis = "Gis"
+    show A   = "A"
+    show Ais = "Ais"
+    show B   = "B"
+
+  Pitch : Type
+  Pitch = Pair PitchClass Octave
+
+  Cast Pitch PitchClass where
+    cast = fst
+
+  [PitchOrd] Ord Pitch where
+    compare (pc1, oct1) (pc2, oct2) =
+      case compare oct1 oct2 of
+        EQ => compare pc1 pc2
+        res => res
+
+  [PitchShow] Show Pitch where
+    show (pc, octave) = show pc ++ show octave
+
 
 namespace Diatonic
   data PitchClass
@@ -128,20 +178,22 @@ namespace Diatonic
     | A
     | B
 
-  Enum Diatonic.PitchClass where
+  [DiatonicPitchClassRefC] Enum Diatonic.PitchClass where
+    pred C = B
+    pred D = C
     pred E = D
     pred F = E
     pred G = F
     pred A = G
     pred B = A
-    pred _ = C
 
     succ C = D
     succ D = E
     succ E = F
     succ F = G
     succ G = A
-    succ _ = B
+    succ A = B
+    succ B = C
 
     toNat C = 0
     toNat D = 1
@@ -151,24 +203,16 @@ namespace Diatonic
     toNat A = 5
     toNat B = 6
 
-    fromNat Z                     = C
-    fromNat (S Z)                 = D
-    fromNat (S (S Z))             = E
-    fromNat (S (S (S Z)))         = F
-    fromNat (S (S (S (S Z))))     = G
-    fromNat (S (S (S (S (S Z))))) = A
-    fromNat _                     = B
+    fromNat Z     = C
+    fromNat (S k) = succ (fromNat k)
 
-  Eq Diatonic.PitchClass where
+  Eq Diatonic.PitchClass using DiatonicPitchClassRefC where
     (==) = (==) `on` toNat
 
-  Ord Diatonic.PitchClass where
+  Ord Diatonic.PitchClass using DiatonicPitchClassRefC where
     compare = compare `on` toNat
 
-  Cast Diatonic.PitchClass Int where
-    cast = fromNat . toNat
-
-  Cast Diatonic.PitchClass Music.PitchClass where
+  Cast Diatonic.PitchClass Chromatic.PitchClass where
     cast C = C
     cast D = D
     cast E = E
@@ -178,13 +222,7 @@ namespace Diatonic
     cast B = B
 
   Show Diatonic.PitchClass where
-    show C = "C"
-    show D = "D"
-    show E = "E"
-    show F = "F"
-    show G = "G"
-    show A = "A"
-    show B = "B"
+    show = show . (cast {to = Chromatic.PitchClass})
 
   Pitch : Type
   Pitch = Pair Diatonic.PitchClass Octave
@@ -192,14 +230,11 @@ namespace Diatonic
   Cast Diatonic.Pitch Diatonic.PitchClass where
     cast = fst
 
-  Cast Diatonic.Pitch Music.Pitch where
+  Cast Diatonic.Pitch Chromatic.Pitch where
     cast (dpc, octave) = (cast dpc, octave)
 
   [DiatonicPitchOrd] Ord Diatonic.Pitch where
-    compare (pc1, oct1) (pc2, oct2) =
-      case compare oct1 oct2 of
-        EQ => compare pc1 pc2
-        res => res
+    compare = compare@{PitchOrd} `on` cast
 
   [DiatonicPitchShow] Show Diatonic.Pitch where
-    show (pc, octave) = show pc ++ show octave
+    show = show . cast {to = Chromatic.Pitch}

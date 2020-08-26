@@ -40,8 +40,7 @@ implementation DecEq (Zn n) where
       primitiveNotEq : x = y -> Void
       primitiveNotEq prf = believe_me {b = Void} ()
 
---- ||| Return the smallest non-negative representative of the class of
---- ||| a modulo n.
+--- ||| Return the smallest non-negative representative of the class of a modulo n.
 leastPositiveResidue : (Integral ty, Ord ty) => (a : ty) -> (b : ty) -> ty
 leastPositiveResidue a n = let r = a `mod` n in if r < 0 then r + n else r
 

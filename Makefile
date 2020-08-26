@@ -12,9 +12,8 @@ gap-check: ${srcs}
 gap-docs: makedoc.g ${srcs}
 	gap --nointeract -b $<
 
-idris-check: $(shell find {src,test} -name '*.idr')
-	idris --execute -isrc -itest -p contrib -p specdris test/Data/GIS/Test.idr
-	idris --execute -isrc -itest -p contrib -p specdris test/Data/Music/Test.idr
+idris-check:
+	@ elba test
 
 .PHONY: update
 niv-update: package ?= nixpkgs

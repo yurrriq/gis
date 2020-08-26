@@ -1,4 +1,6 @@
-{ pkgs ? import ./nix }:
+{ pkgs ? import ./nix
+, doCheck ? true
+}:
 {
   idris = pkgs.stdenv.mkDerivation {
     pname = "gis";
@@ -22,8 +24,7 @@
       elba build --offline
     '';
 
-    # FIXME
-    dontCheck = true;
+    inherit doCheck;
     checkPhase = ''
       elba test
     '';
