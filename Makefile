@@ -12,9 +12,6 @@ gap-check: ${srcs}
 gap-docs: makedoc.g ${srcs}
 	gap --nointeract -b $<
 
-idris-check:
-	@ elba test
-
 .PHONY: update
 niv-update: package ?= nixpkgs
 niv-update: sources := nix/sources.json

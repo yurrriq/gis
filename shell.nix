@@ -21,5 +21,5 @@ pkgs.mkShell {
     with python3Packages; [
       pre-commit
     ]
-  ) ++ (import ./. { inherit pkgs; }).idris.nativeBuildInputs;
+  );
 }

@@ -1,9 +1,1 @@
-*.ibc
-*.o
-.elba/*
-!.elba/cache/
-.elba/cache/*
-!.elba/cache/src/
-!.elba/config
 result*
-target/
