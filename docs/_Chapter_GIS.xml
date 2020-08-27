@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This is an automatically generated file. -->
+<Chapter Label="Chapter_GIS">
+<Heading>GIS</Heading>
+
+<Section Label="Chapter_GIS_Section_Constructing_a_GIS">
+<Heading>Constructing a GIS</Heading>
+
+<ManSection>
+  <Oper Arg="S, IVLS, int" Name="GIS" Label="for IsMusicalSpace, IsGroup, IsFunction"/>
+ <Description>
+  A Generalized Interval System (<M>GIS</M>) is an ordered triple
+  (<A>S</A>, <A>IVLS</A>, <A>int</A>), where the space <A>S</A> of the
+  <M>GIS</M> is a set of elements (satisfying <M>IsObject</M>), the set
+  <A>IVLS</A> of intervals for the <M>GIS</M> is a group in the mathematical
+  sense (satisfying <M>IsGroup</M>), and <A>int</A> is a function from
+  <A>S</A> x <A>S</A> into <A>IVLS</A> such that...
+ </Description>
+</ManSection>
+
+
+</Section>
+
+
+<Section Label="Chapter_GIS_Section_Computing_intervals">
+<Heading>Computing intervals</Heading>
+
+<ManSection>
+  <Oper Arg="GIS, s, t" Name="GISInt" Label="for IsGIS, IsObject, IsObject"/>
+ <Description>
+  <M>\forall s, t \in S,\;int(s, t)</M> where <A>gis</A>
+  <M> = (S, IVLS, int)</M>
+ </Description>
+</ManSection>
+
+
+</Section>
+
+
+<Section Label="Chapter_GIS_Section_Predefined_GIS">
+<Heading>Predefined GIS</Heading>
+
+<ManSection>
+  <Var Name="PSpace" />
+ <Description>
+  <M>(\mathbb{Z}, (\mathbb{Z},{+}), int)</M> where
+  <M>int{:}\mathbb{Z}{\times}\mathbb{Z}{\to}\mathbb{Z}</M> and
+  <M>int(s,t) = t-s</M>.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Var Name="PCSpace" />
+ <Description>
+  <M>(\mathbb{Z}_{12}, (\mathbb{Z}_{12},{+}), int)</M> where
+  <M>int{:}\mathbb{Z}_{12}{\times}\mathbb{Z}_{12}{\to}\mathbb{Z}_{12}</M> and
+  <M>int(s,t) = (t-s)\mod 12</M>.
+ </Description>
+</ManSection>
+
+
+</Section>
+
+
+</Chapter>
+
