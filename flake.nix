@@ -37,6 +37,7 @@
         inputs.git-hooks-nix.flakeModule
         inputs.treefmt-nix.flakeModule
         ./nix/emacs.nix
+        ./nix/gap.nix
         ./nix/haskell.nix
         ./nix/idris.nix
       ];
@@ -78,6 +79,7 @@
             inputsFrom = [
               config.pre-commit.devShell
               self'.devShells.emacs
+              self'.devShells.gap
               self'.devShells.haskell
               self'.devShells.idris
             ];
