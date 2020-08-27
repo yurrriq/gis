@@ -1,6 +1,6 @@
 [package]
 name = "yurrriq/gis"
-version = "0.3.1"
+version = "0.4.0"
 authors = ["Eric Bailey <eric@ericb.me>"]
 repository = "https://github.com/yurrriq/gis"
 # TODO: readme = "README.md"
@@ -15,6 +15,7 @@ license = "MIT"
 path = "src/"
 mods = [
   "Data.GIS",
+  "Data.GIS.Verified",
   "Data.Int.Algebra",
   "Data.Music",
 ]
@@ -23,9 +24,9 @@ idris_opts = ["-p", "contrib"]
 [[targets.test]]
 path = "test/"
 main = "Data.GIS.Test.runTests"
-idris_opts = ["-p", "specdris"]
+idris_opts = ["-p", "contrib", "-p", "specdris"]
 
 [[targets.test]]
 path = "test/"
 main = "Data.Music.Test.runTests"
-idris_opts = ["-p", "specdris"]
+idris_opts = ["-p", "contrib", "-p", "specdris"]

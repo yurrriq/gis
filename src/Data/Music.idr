@@ -3,10 +3,18 @@ module Data.Music
 import Data.Combinators
 import Data.Int.Algebra
 
+
+private
+divMod : Nat -> Nat -> (Nat, Nat)
+divMod n d = (n `div` d, n `mod` d)
+
+
 %access public export
+
 
 Octave : Type
 Octave = Int
+
 
 namespace Chromatic
   data PitchClass
@@ -23,7 +31,7 @@ namespace Chromatic
     | Ais
     | B
 
-  [PitchClassRefC] Enum PitchClass where
+  Enum PitchClass where
     pred C   = B
     pred Cis = C
     pred D   = Cis
@@ -66,76 +74,16 @@ namespace Chromatic
     fromNat Z = C
     fromNat (S k) = succ (fromNat k)
 
-  [PitchClassRefCis] Enum PitchClass where
-    pred = pred@{PitchClassRefC}
-    succ = succ@{PitchClassRefC}
-    toNat = Nat.pred . toNat@{PitchClassRefC}
-    fromNat = fromNat@{PitchClassRefC} . succ
+  Cast PitchClass Int where
+    cast = toIntNat . toNat
 
-  [PitchClassRefD] Enum PitchClass where
-    pred = pred@{PitchClassRefCis}
-    succ = succ@{PitchClassRefCis}
-    toNat = Nat.pred . toNat@{PitchClassRefCis}
-    fromNat = fromNat@{PitchClassRefCis} . succ
+  Cast PitchClass (Zn n) where
+    cast = MkZn . cast
 
-  [PitchClassRefDis] Enum PitchClass where
-    pred = pred@{PitchClassRefD}
-    succ = succ@{PitchClassRefD}
-    toNat = Nat.pred . toNat@{PitchClassRefD}
-    fromNat = fromNat@{PitchClassRefD} . succ
-
-  [PitchClassRefE] Enum PitchClass where
-    pred = pred@{PitchClassRefDis}
-    succ = succ@{PitchClassRefDis}
-    toNat = Nat.pred . toNat@{PitchClassRefDis}
-    fromNat = fromNat@{PitchClassRefDis} . succ
-
-  [PitchClassRefF] Enum PitchClass where
-    pred = pred@{PitchClassRefE}
-    succ = succ@{PitchClassRefE}
-    toNat = Nat.pred . toNat@{PitchClassRefE}
-    fromNat = fromNat@{PitchClassRefE} . succ
-
-  [PitchClassRefFis] Enum PitchClass where
-    pred = pred@{PitchClassRefF}
-    succ = succ@{PitchClassRefF}
-    toNat = Nat.pred . toNat@{PitchClassRefF}
-    fromNat = fromNat@{PitchClassRefF} . succ
-
-  [PitchClassRefG] Enum PitchClass where
-    pred = pred@{PitchClassRefFis}
-    succ = succ@{PitchClassRefFis}
-    toNat = Nat.pred . toNat@{PitchClassRefFis}
-    fromNat = fromNat@{PitchClassRefFis} . succ
-
-  [PitchClassRefGis] Enum PitchClass where
-    pred = pred@{PitchClassRefG}
-    succ = succ@{PitchClassRefG}
-    toNat = Nat.pred . toNat@{PitchClassRefG}
-    fromNat = fromNat@{PitchClassRefG} . succ
-
-  [PitchClassRefA] Enum PitchClass where
-    pred = pred@{PitchClassRefGis}
-    succ = succ@{PitchClassRefGis}
-    toNat = Nat.pred . toNat@{PitchClassRefGis}
-    fromNat = fromNat@{PitchClassRefGis} . succ
-
-  [PitchClassRefAis] Enum PitchClass where
-    pred = pred@{PitchClassRefA}
-    succ = succ@{PitchClassRefA}
-    toNat = Nat.pred . toNat@{PitchClassRefA}
-    fromNat = fromNat@{PitchClassRefA} . succ
-
-  [PitchClassRefB] Enum PitchClass where
-    pred = pred@{PitchClassRefAis}
-    succ = succ@{PitchClassRefAis}
-    toNat = Nat.pred . toNat@{PitchClassRefAis}
-    fromNat = fromNat@{PitchClassRefAis} . succ
-
-  Eq PitchClass using PitchClassRefC where
+  Eq PitchClass where
     (==) = (==) `on` toNat
 
-  Ord PitchClass using PitchClassRefC where
+  Ord PitchClass where
     compare = compare `on` toNat
 
   Show PitchClass where
@@ -155,8 +103,24 @@ namespace Chromatic
   Pitch : Type
   Pitch = Pair PitchClass Octave
 
+  Enum Pitch where
+    succ (B, oct)  = (C, oct + 1)
+    succ (pc, oct) = (succ C, oct)
+
+    pred (C, oct)  = (B, oct - 1)
+    pred (pc, oct) = (pred pc, oct)
+
+    toNat (pc, oct) = toNat pc + 12 * (toNat oct)
+
+    fromNat k =
+      let (pc, oct) = assert_total (divMod k 12) in
+        (fromNat pc, toIntNat oct)
+
   Cast Pitch PitchClass where
     cast = fst
+
+  Cast Pitch Int where
+    cast (pc, oct) = toIntNat (toNat pc) + 12 * oct
 
   [PitchOrd] Ord Pitch where
     compare (pc1, oct1) (pc2, oct2) =
@@ -178,7 +142,7 @@ namespace Diatonic
     | A
     | B
 
-  [DiatonicPitchClassRefC] Enum Diatonic.PitchClass where
+  Enum Diatonic.PitchClass where
     pred C = B
     pred D = C
     pred E = D
@@ -206,11 +170,17 @@ namespace Diatonic
     fromNat Z     = C
     fromNat (S k) = succ (fromNat k)
 
-  Eq Diatonic.PitchClass using DiatonicPitchClassRefC where
+  Eq Diatonic.PitchClass where
     (==) = (==) `on` toNat
 
-  Ord Diatonic.PitchClass using DiatonicPitchClassRefC where
+  Ord Diatonic.PitchClass where
     compare = compare `on` toNat
+
+  Cast Diatonic.PitchClass Int where
+    cast = toIntNat . toNat
+
+  Cast Diatonic.PitchClass (Zn n) where
+    cast = MkZn . cast
 
   Cast Diatonic.PitchClass Chromatic.PitchClass where
     cast C = C
@@ -227,11 +197,27 @@ namespace Diatonic
   Pitch : Type
   Pitch = Pair Diatonic.PitchClass Octave
 
+  Enum Diatonic.Pitch where
+    succ (B, oct)  = (C, oct + 1)
+    succ (pc, oct) = (succ C, oct)
+
+    pred (C, oct)  = (B, oct - 1)
+    pred (pc, oct) = (pred C, oct)
+
+    toNat (pc, oct) = toNat pc + 7 * (toNat oct)
+
+    fromNat k =
+      let (pc, oct) = assert_total (divMod k 7) in
+        (fromNat pc, toIntNat oct)
+
   Cast Diatonic.Pitch Diatonic.PitchClass where
     cast = fst
 
   Cast Diatonic.Pitch Chromatic.Pitch where
     cast (dpc, octave) = (cast dpc, octave)
+
+  Cast Diatonic.Pitch Int where
+    cast (pc, oct) = toIntNat (toNat pc) + 7 * oct
 
   [DiatonicPitchOrd] Ord Diatonic.Pitch where
     compare = compare@{PitchOrd} `on` cast

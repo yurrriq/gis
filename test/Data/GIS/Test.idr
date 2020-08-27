@@ -1,5 +1,6 @@
 module Data.GIS.Test
 
+import Control.Algebra.NumericImplementations
 import Data.GIS
 import Data.Int.Algebra
 import Data.Music
@@ -9,7 +10,7 @@ import Specdris.Spec
 %access export
 
 lewin2_1_1 : SpecTree
-lewin2_1_1 = let int = int@{DiatonicPitchGIS}; (<+>) = (<+>)@{PlusIntSemi} in
+lewin2_1_1 = let int = int@{DiatonicPitchGIS} in
   describe "Diatonic pitch examples (Lewin, 2.1.1)" $ do
     it "int(C4, C4) = 0" $ do
       int (C, 4) (C, 4) === 0
@@ -43,7 +44,7 @@ lewin2_1_2 = let int = int@{PSpaceGIS} in
       int (C, 4) (F, 2) === -19
 
 lewin2_1_3 : SpecTree
-lewin2_1_3 = let int = int@{PCSpaceGIS}; fromNat = fromNat@{PitchClassRefC} in
+lewin2_1_3 = let int = int@{PCSpaceGIS} in
   describe "pc-space examples (Lewin, 2.1.3)" $ do
     it "int(8, 1) = 5" $ do
       int (fromNat 8) (fromNat 1) === MkZn 5

@@ -7,43 +7,41 @@ import Data.Music
 
 %access public export
 
-interface Group ivls => HasLabel space ivls where
-  LABEL : space -> ivls
 
-interface HasLabel space ivls => GIS space ivls where
-  int : space -> space -> ivls
+interface Group ivls => GIS space ivls | space where
+  ref     : space
+  int     : space -> space -> ivls
+  LABEL   : space -> ivls
+
   int s t = LABEL t <-> LABEL s
-  conditionA : int r s <+> int s t = int r t
-  conditionB : int s t = int s' t' -> (s = s', t = t')
+  -- LABEL s = if s == ref then neutral else int ref s
 
 
-[DiatonicPitchLABEL] HasLabel Diatonic.Pitch Int using PlusZnGroup, DiatonicPitchClassRefC where
-  LABEL (pitchClass, octave) = fromNat (toNat pitchClass) + 7 * octave
-
-[DiatonicPitchGIS] GIS Diatonic.Pitch Int using DiatonicPitchLABEL where
-  conditionA = believe_me "int r s + int s t = int r t"
-  conditionB = believe_me "int s t = int s' t' -> (s = s', t = t')"
+[IntScalarGIS] GIS Int Int where
+  ref   = 0
+  LABEL = id
 
 
-[PSpaceLABEL] HasLabel Chromatic.Pitch Int using PlusZnGroup, PitchClassRefC where
-  LABEL (pitchClass, octave) = fromNat (toNat pitchClass) + 12 * octave
-
-[PSpaceGIS] GIS Chromatic.Pitch Int using PSpaceLABEL where
-  conditionA = believe_me "int r s + int s t = int r t"
-  conditionB = believe_me "int s t = int s' t' -> (s = s', t = t')"
+[DiatonicPitchGIS] GIS Diatonic.Pitch Int where
+  ref   = (C, 0)
+  LABEL = cast
 
 
-[PCSpaceLABEL] HasLabel Chromatic.PitchClass (Zn 12) using PlusZnGroup, PitchClassRefC where
-  LABEL = MkZn . fromNat . toNat
-
-[PCSpaceGIS] GIS Chromatic.PitchClass (Zn 12) using PCSpaceLABEL where
-  conditionA = believe_me "int r s + int s t = int r t"
-  conditionB = believe_me "int s t = int s' t' -> (s = s', t = t')"
+[PSpaceGIS] GIS Chromatic.Pitch Int where
+  ref   = (C, 0)
+  LABEL = cast
 
 
-[DiatonicPitchClassLABEL] HasLabel Diatonic.PitchClass (Zn 7) using PlusZnGroup, DiatonicPitchClassRefC where
-  LABEL = MkZn . fromNat . toNat
+[PCSpaceGIS] GIS Chromatic.PitchClass (Zn 12) where
+  ref   = C
+  LABEL = cast
 
-[DiatonicPitchClassGIS] GIS Diatonic.PitchClass (Zn 7) using DiatonicPitchClassLABEL where
-  conditionA = believe_me "int r s + int s t = int r t"
-  conditionB = believe_me "int s t = int s' t' -> (s = s', t = t')"
+
+[DiatonicPitchClassGIS] GIS Diatonic.PitchClass (Zn 7) where
+  ref   = C
+  LABEL = cast
+
+
+[PitchClassRefFGIS] GIS Chromatic.PitchClass (Zn 12) where
+  ref     = F
+  LABEL s = MkZn (cast s) <-> MkZn 5
