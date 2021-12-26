@@ -38,6 +38,7 @@
         inputs.treefmt-nix.flakeModule
         ./nix/emacs.nix
         ./nix/haskell.nix
+        ./nix/idris.nix
       ];
 
       systems = [
@@ -78,6 +79,7 @@
               config.pre-commit.devShell
               self'.devShells.emacs
               self'.devShells.haskell
+              self'.devShells.idris
             ];
           };
         };
