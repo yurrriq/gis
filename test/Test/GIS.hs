@@ -58,7 +58,9 @@ test_lewin_2_1_3 =
           testCase "int(E, E) = 0" $
             int' Chromatic.E Chromatic.E @?= 0,
           testCase "int(E, F) = 1" $
-            int' Chromatic.E Chromatic.F @?= 1
+            int' Chromatic.E Chromatic.F @?= 1,
+          testCase "int(F, E) = 11" $
+            int' Chromatic.F Chromatic.E @?= 11
         ]
 
 test_lewin_2_1_4 :: TestTree
@@ -73,3 +75,6 @@ test_lewin_2_1_4 =
           testCase "int(D, C) = 6" $
             int' Diatonic.D Diatonic.C @?= 6
         ]
+
+-- test_lewin_2_1_5 :: TestTree
+-- test_lewin_2_1_5 = undefined

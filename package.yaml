@@ -13,6 +13,7 @@ dependencies:
 - base
 - groups
 - modular-arithmetic
+- semigroupoids
 - tasty
 - tasty-discover
 - tasty-hunit
