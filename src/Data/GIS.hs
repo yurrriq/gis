@@ -1,6 +1,10 @@
+{-# LANGUAGE AllowAmbiguousTypes #-}
 {-# LANGUAGE DataKinds #-}
+{-# LANGUAGE DefaultSignatures #-}
 {-# LANGUAGE ExplicitNamespaces #-}
 {-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE FunctionalDependencies #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE TypeApplications #-}
 {-# LANGUAGE TypeOperators #-}
 {-# OPTIONS_GHC -Wno-orphans #-}
@@ -8,31 +12,43 @@
 module Data.GIS where
 
 import Data.Group (Group (..), (~~))
+import Data.Isomorphism (embed)
 import Data.Modular (toMod, ℤ, type (/))
 import Data.Monoid (Sum (..))
 import Data.Pitch
 import qualified Data.PitchClass.Chromatic as Chromatic
 import qualified Data.PitchClass.Diatonic as Diatonic
 
-data Group ivls => GIS space ivls = GIS
-  { ref :: space,
-    int :: space -> space -> ivls,
-    label :: space -> ivls
-  }
+class Group ivls => GIS space ivls | space -> ivls where
+  ref :: space
+  int :: space -> space -> ivls
+  label :: space -> ivls
 
-mkGIS :: Group ivls => space -> (space -> ivls) -> GIS space ivls
-mkGIS ref' label' = GIS ref' int' label'
-  where
-    int' s t = label' t ~~ label' s
+  default ref :: Monoid space => space
+  ref = mempty
 
-gisChromaticPitchClass, pcSpace :: GIS Chromatic.PitchClass (ℤ / 12)
-gisChromaticPitchClass = mkGIS Chromatic.C (toMod @12 . fromIntegral . fromEnum)
-pcSpace = gisChromaticPitchClass
+  int s t = label t ~~ label s
 
-gisChromaticPitch, pSpace :: GIS (Pitch Chromatic.PitchClass) (Sum Int)
-gisChromaticPitch = mkGIS (Chromatic.C, 0) $ \(pc, oct) ->
-  Sum (fromEnum pc + 12 * oct)
-pSpace = gisChromaticPitch
+  default label :: Eq space => space -> ivls
+  label s = if s == ref then mempty else int ref s
+
+-- pc-space
+instance GIS Chromatic.PitchClass (ℤ / 12) where
+  ref = Chromatic.C
+  label = embed (Chromatic.iso_z12)
+
+-- p-space
+instance GIS (Pitch Chromatic.PitchClass) (Sum Int) where
+  ref = (Chromatic.C, 0)
+  label (pc, oct) = Sum (fromEnum pc + 12 * oct)
+
+instance GIS Diatonic.PitchClass (ℤ / 7) where
+  ref = Diatonic.C
+  label = toMod @7 . fromIntegral . fromEnum
+
+instance GIS (Pitch Diatonic.PitchClass) (Sum Int) where
+  ref = (Diatonic.C, 0)
+  label (pc, oct) = Sum (fromEnum pc + 7 * oct)
 
 instance Semigroup (ℤ / 12) where
   (<>) = (+)
@@ -42,13 +58,6 @@ instance Monoid (ℤ / 12) where
 
 instance Group (ℤ / 12) where
   invert = negate
-
-gisDiatonicPitchClass :: GIS Diatonic.PitchClass (ℤ / 7)
-gisDiatonicPitchClass = mkGIS Diatonic.C (toMod @7 . fromIntegral . fromEnum)
-
-gisDiatonicPitch :: GIS (Pitch Diatonic.PitchClass) (Sum Int)
-gisDiatonicPitch = mkGIS (Diatonic.C, 0) $ \(pc, oct) ->
-  Sum (fromEnum pc + 7 * oct)
 
 instance Semigroup (ℤ / 7) where
   (<>) = (+)
