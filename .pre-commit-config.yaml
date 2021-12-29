@@ -4,15 +4,16 @@ repos:
   - id: check-useless-excludes
   repo: meta
 - hooks:
-  - id: end-of-file-fixer
+  - exclude: VERSION
+    id: end-of-file-fixer
   - id: trailing-whitespace
   - files: ^.pre-commit-config.yaml$
     id: check-yaml
     name: Check pre-commit config
-  repo: git://github.com/pre-commit/pre-commit-hooks
-  rev: v3.2.0
+  repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.1.0
 - hooks:
   - id: nixpkgs-fmt
     name: Format .nix files
-  repo: git://github.com/nix-community/nixpkgs-fmt
-  rev: v1.0.0
+  repo: https://github.com/nix-community/nixpkgs-fmt
+  rev: v1.2.0

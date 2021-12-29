@@ -1,0 +1,34 @@
+name: GIS
+version: !include "./VERSION"
+synopsis: An implementation of David Lewin's Generalized Interval Systems
+author: Eric Bailey
+maintainer: eric@ericb.me
+license-file: LICENSE
+license: MIT
+github: yurrriq/gis
+extra-source-files:
+- LICENSE
+- VERSION
+dependencies:
+- base
+- groups
+- modular-arithmetic
+- tasty
+- tasty-discover
+- tasty-hunit
+ghc-options:
+- -Wall
+- -Werror
+library:
+  ghc-options:
+  - -fwarn-incomplete-patterns
+  source-dirs: src
+tests:
+  GIS-test:
+    main: Main.hs
+    ghc-options:
+    - -O0
+    - -threaded
+    source-dirs: test
+    dependencies:
+    - GIS
