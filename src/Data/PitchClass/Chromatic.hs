@@ -1,4 +1,12 @@
+{-# LANGUAGE DataKinds #-}
+{-# LANGUAGE ExplicitNamespaces #-}
+{-# LANGUAGE TypeApplications #-}
+{-# LANGUAGE TypeOperators #-}
+
 module Data.PitchClass.Chromatic where
+
+import Data.Isomorphism (Iso (..))
+import Data.Modular (toMod, unMod, ℤ, type (/))
 
 data PitchClass
   = C
@@ -14,3 +22,6 @@ data PitchClass
   | Ais
   | B
   deriving (Bounded, Enum, Eq, Ord, Show)
+
+iso_z12 :: Iso (->) PitchClass (ℤ / 12)
+iso_z12 = Iso (toMod @12 . fromIntegral . fromEnum) (toEnum . fromInteger . unMod)
