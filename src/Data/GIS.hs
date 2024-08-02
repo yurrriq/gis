@@ -1,4 +1,3 @@
-{-# LANGUAGE AllowAmbiguousTypes #-}
 {-# LANGUAGE DataKinds #-}
 {-# LANGUAGE DefaultSignatures #-}
 {-# LANGUAGE FlexibleInstances #-}
@@ -13,7 +12,7 @@ import Data.Group (Group (..), (~~))
 import Data.Isomorphism (embed)
 import Data.Modular (toMod, ℤ, type (/))
 import Data.Monoid (Sum (..))
-import Data.Pitch
+import Data.Pitch (Pitch)
 import qualified Data.PitchClass.Chromatic as Chromatic
 import qualified Data.PitchClass.Diatonic as Diatonic
 
