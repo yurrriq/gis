@@ -4,12 +4,13 @@
 (tool-bar-mode 0)
 
 (require 'package)
-(setq-default
-  frames-only-mode t
-  indent-tabs-mode nil
-  inhibit-splash-screen t
-  package-archives nil
-  package-enable-at-startup nil)
+
+(setq-default frames-only-mode t
+              indent-tabs-mode nil
+              inhibit-splash-screen t
+              package-archives nil
+              package-enable-at-startup nil)
+
 (package-initialize)
 
 (load-theme 'wombat)
@@ -17,12 +18,22 @@
 (global-set-key (kbd "C-x C-k") 'kill-this-buffer)
 (global-set-key (kbd "s-u") 'revert-buffer)
 
+(set-face-attribute 'default nil :family "Iosevka Nerd Font Mono" :height 100)
+
 (eval-when-compile
   (require 'use-package))
 
 (setq-default use-package-always-ensure t)
 
-(use-package company)
+(use-package company
+  :custom
+  (company-idle-begin 0.5)
+  :bind
+  (:map company-active-map
+        ("C-n" . company-select-next)
+        ("C-p" . company-select-previous)
+        ("M-<" . company-select-first)
+        ("M->" . company-select-last)))
 
 (use-package crux
   :config
@@ -41,9 +52,12 @@
   (setq-default fill-column 80)
   (global-display-fill-column-indicator-mode))
 
+(use-package flycheck)
+
 (use-package gap-mode)
 
-(use-package haskell-mode)
+(use-package haskell-mode
+  :hook (haskell-mode . interactive-haskell-mode))
 
 (use-package hl-todo
   :demand
@@ -73,7 +87,17 @@
   :demand
   :config (nyan-mode 1))
 
-(use-package paredit)
+(use-package ormolu
+ :hook (haskell-mode . ormolu-format-on-save-mode)
+ :bind
+ (:map haskell-mode-map
+   ("C-c r" . ormolu-format-buffer)))
+
+(use-package paredit
+  :hook (emacs-lisp-mode . paredit-mode))
+
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
 
 (use-package smex
   :demand
