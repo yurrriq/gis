@@ -1,10 +1,8 @@
 {-# LANGUAGE AllowAmbiguousTypes #-}
 {-# LANGUAGE DataKinds #-}
 {-# LANGUAGE DefaultSignatures #-}
-{-# LANGUAGE ExplicitNamespaces #-}
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE FunctionalDependencies #-}
-{-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE TypeApplications #-}
 {-# LANGUAGE TypeOperators #-}
 {-# OPTIONS_GHC -Wno-orphans #-}
@@ -19,23 +17,23 @@ import Data.Pitch
 import qualified Data.PitchClass.Chromatic as Chromatic
 import qualified Data.PitchClass.Diatonic as Diatonic
 
-class Group ivls => GIS space ivls | space -> ivls where
+class (Group ivls) => GIS space ivls | space -> ivls where
   ref :: space
   int :: space -> space -> ivls
   label :: space -> ivls
 
-  default ref :: Monoid space => space
+  default ref :: (Monoid space) => space
   ref = mempty
 
   int s t = label t ~~ label s
 
-  default label :: Eq space => space -> ivls
+  default label :: (Eq space) => space -> ivls
   label s = if s == ref then mempty else int ref s
 
 -- pc-space
 instance GIS Chromatic.PitchClass (ℤ / 12) where
   ref = Chromatic.C
-  label = embed (Chromatic.iso_z12)
+  label = embed Chromatic.iso_z12
 
 -- p-space
 instance GIS (Pitch Chromatic.PitchClass) (Sum Int) where
