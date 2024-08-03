@@ -17,5 +17,8 @@ gap-check: ${gap-srcs} gap-install
 gap-docs: makedoc.g ${gap-srcs}
 	gap --nointeract -b $<
 
+haskell-check:
+	@ cabal test
+
 idris-check:
 	@ elba test
