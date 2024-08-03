@@ -1,7 +1,6 @@
 module Data.Int.Algebra
 
 import Control.Algebra
-import Data.Nat.DivMod
 
 %access public export
 
@@ -11,32 +10,28 @@ leastPositiveResidue : (Integral ty, Ord ty) => (a : ty) -> (b : ty) -> ty
 leastPositiveResidue a n = let r = a `mod` n in if r < 0 then r + n else r
 
 
-data Zn : Nat -> Type where
-  MkZn : (m : Nat) -> {auto ok : LT m (S k)} -> Zn (S k)
+data Zn : (n : Nat) -> Type where
+  MkZn : Int -> Zn n
 
 
-Semigroup (Zn (S k)) where
-  left <+> (MkZn Z) = left
-  (MkZn Z) <+> right = right
-  (MkZn x) <+> (MkZn y {k=k}) with (divMod (x + y) k)
-    (MkZn r) <+> (MkZn {k=k} (q * (S k))) | (MkDivMod q r rLtn) = ?rhs
-
-    -- MkZn $ if z < i then z else z - i
+Semigroup (Zn n) where
+  (MkZn x) <+> (MkZn y) = let z = x + y; i = fromNat n in
+    MkZn $ if z < i then z else z - i
 
 
--- Monoid (Zn (S k)) where
---   neutral = MkZn Z
-
--- Group (Zn (S k)) where
---   inverse (MkZn Z) = MkZn Z
---   inverse (MkZn (S j) {ok}) {k} = let prf = lteSuccLeft ok; z = (-) (S k) (S j) {smaller=prf} in ?rhs -- x(MkZn z) -- MkZn ((S k) - a)
+Monoid (Zn n) where
+  neutral = MkZn 0
 
 
-Eq (Zn (S k)) where
+Group (Zn n) where
+  inverse (MkZn x) = MkZn (fromNat n - x)
+
+
+Eq (Zn n) where
   (MkZn x) == (MkZn y) = x == y
 
 
-DecEq (Zn (S k)) where
+DecEq (Zn n) where
   decEq x y =
       case x == y of
         True => Yes primitiveEq
@@ -48,5 +43,5 @@ DecEq (Zn (S k)) where
       primitiveNotEq prf = believe_me {b = Void} ()
 
 
-Show (Zn (S k)) where
-  show (MkZn a) {k} = show (leastPositiveResidue a (fromNat k))
+Show (Zn n) where
+  show (MkZn a) = show (leastPositiveResidue a (fromNat n))

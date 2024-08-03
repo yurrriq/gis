@@ -1,6 +1,6 @@
 [[packages]]
 id = 'yurrriq/gis@dir+/home/yurrriq/src/github.com/yurrriq/gis'
-version = '0.4.1'
+version = '0.4.2'
 
 [[packages.dependencies]]
 id = 'pheymann/specdris@git+https://github.com/pheymann/specdris#7d7721cb16f71a389145ce0f41562d889ae648a7'
