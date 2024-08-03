@@ -6,6 +6,9 @@ gap-srcs := \
 	makedoc.g \
 	read.g
 
+.PHONY: all
+all: gap-check haskell-check idris-check
+
 .PHONY: gap-install
 gap-install:
 	@ mkdir -p ~/.gap/pkg
