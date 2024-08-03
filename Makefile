@@ -15,10 +15,10 @@ gap-install:
 	@ ln -fs $PWD ~/.gap/pkg/
 
 gap-check: ${gap-srcs} gap-install
-	gap --nointeract -l ";." -q tst/testall.g
+	@ gap --nointeract -l ";." -q tst/testall.g
 
 gap-docs: makedoc.g ${gap-srcs}
-	gap --nointeract -b $<
+	@ gap --nointeract -b $<
 
 haskell-check:
 	@ cabal test
