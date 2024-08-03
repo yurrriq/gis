@@ -1,11 +1,8 @@
-{-# LANGUAGE DataKinds #-}
-{-# LANGUAGE TypeOperators #-}
+{-# LANGUAGE TypeApplications #-}
 
 module Test.GIS where
 
 import Data.GIS (int)
-import Data.Modular (ℤ, type (/))
-import Data.Monoid (Sum (..))
 import Data.Pitch (Pitch)
 import qualified Data.PitchClass.Chromatic as Chromatic
 import qualified Data.PitchClass.Diatonic as Diatonic
@@ -14,7 +11,7 @@ import Test.Tasty.HUnit (testCase, (@?=))
 
 test_lewin_2_1_1 :: TestTree
 test_lewin_2_1_1 =
-  let int' = int :: Pitch Diatonic.PitchClass -> Pitch Diatonic.PitchClass -> Sum Int
+  let int' = int @(Pitch Diatonic.PitchClass)
    in testGroup
         "Diatonic pitch examples (Lewin, 2.1.1)"
         [ testCase "int(C4, C4) = 0" $
@@ -39,7 +36,7 @@ test_lewin_2_1_1 =
 
 test_lewin_2_1_2 :: TestTree
 test_lewin_2_1_2 =
-  let int' = int :: Pitch Chromatic.PitchClass -> Pitch Chromatic.PitchClass -> Sum Int
+  let int' = int @(Pitch Chromatic.PitchClass)
    in testGroup
         "p-space examples (Lewin, 2.1.2)"
         [ testCase "int(C4, D4) = 2" $
@@ -56,7 +53,7 @@ test_lewin_2_1_2 =
 
 test_lewin_2_1_3 :: TestTree
 test_lewin_2_1_3 =
-  let int' = int :: Chromatic.PitchClass -> Chromatic.PitchClass -> (ℤ / 12)
+  let int' = int @Chromatic.PitchClass
    in testGroup
         "pc-space examples (Lewin, 2.1.3)"
         [ testCase "int(8, 1) = 5" $
@@ -71,7 +68,7 @@ test_lewin_2_1_3 =
 
 test_lewin_2_1_4 :: TestTree
 test_lewin_2_1_4 =
-  let int' = int :: Diatonic.PitchClass -> Diatonic.PitchClass -> (ℤ / 7)
+  let int' = int @Diatonic.PitchClass
    in testGroup
         "Diatonic pitch class examples (Lewin, 2.1.4)"
         [ testCase "int(D, D) = 0" $
