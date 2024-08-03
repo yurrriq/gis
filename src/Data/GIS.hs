@@ -2,15 +2,17 @@
 {-# LANGUAGE DefaultSignatures #-}
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE FunctionalDependencies #-}
-{-# LANGUAGE TypeApplications #-}
+{-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE TypeOperators #-}
+{-# LANGUAGE UndecidableInstances #-}
+{-# LANGUAGE UndecidableSuperClasses #-}
 {-# OPTIONS_GHC -Wno-orphans #-}
 
 module Data.GIS where
 
 import Data.Group (Group (..), (~~))
-import Data.Isomorphism (embed)
-import Data.Modular (toMod, ℤ, type (/))
+import Data.Isomorphism (Iso (..), embed)
+import Data.Modular (Modulus, toMod, unMod, ℤ, type (/))
 import Data.Monoid (Sum (..))
 import Data.Pitch (Pitch)
 import qualified Data.PitchClass.Chromatic as Chromatic
@@ -32,7 +34,7 @@ class (Group ivls) => GIS space ivls | space -> ivls where
 -- pc-space
 instance GIS Chromatic.PitchClass (ℤ / 12) where
   ref = Chromatic.C
-  label = embed Chromatic.iso_z12
+  label = embed isoℤ
 
 -- p-space
 instance GIS (Pitch Chromatic.PitchClass) (Sum Int) where
@@ -41,11 +43,19 @@ instance GIS (Pitch Chromatic.PitchClass) (Sum Int) where
 
 instance GIS Diatonic.PitchClass (ℤ / 7) where
   ref = Diatonic.C
-  label = toMod @7 . fromIntegral . fromEnum
+  label = embed isoℤ
 
 instance GIS (Pitch Diatonic.PitchClass) (Sum Int) where
   ref = (Diatonic.C, 0)
   label (pc, oct) = Sum (fromEnum pc + 7 * oct)
+
+class (Enum space, Modulus n) => Isoℤ space n where
+  isoℤ :: Iso (->) space (ℤ / n)
+  isoℤ = Iso (toMod . fromIntegral . fromEnum) (toEnum . fromInteger . unMod)
+
+instance Isoℤ Chromatic.PitchClass 12
+
+instance Isoℤ Diatonic.PitchClass 7
 
 instance Semigroup (ℤ / 12) where
   (<>) = (+)
