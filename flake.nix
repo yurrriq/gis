@@ -4,7 +4,6 @@
   inputs = {
     emacs-overlay = {
       inputs = {
-        flake-utils.follows = "flake-utils";
         nixpkgs.follows = "nixpkgs";
         nixpkgs-stable.follows = "nixpkgs-stable";
       };
@@ -15,12 +14,11 @@
     git-hooks-nix = {
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        nixpkgs-stable.follows = "nixpkgs-stable";
       };
       url = "github:cachix/git-hooks.nix";
     };
     nixpkgs.url = "github:nixos/nixpkgs";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/release-24.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/release-24.11";
     treefmt-nix = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:numtide/treefmt-nix";
@@ -72,7 +70,7 @@
           default = pkgs.mkShell {
             FONTCONFIG_FILE = pkgs.makeFontsConf {
               fontDirectories = [
-                (pkgs.nerdfonts.override { fonts = [ "Iosevka" ]; })
+                pkgs.nerd-fonts.iosevka
               ];
             };
 
@@ -92,7 +90,6 @@
         };
 
         treefmt = {
-          projectRootFile = ./flake.nix;
           programs = {
             deadnix.enable = true;
             nixpkgs-fmt.enable = true;
