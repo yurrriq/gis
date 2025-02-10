@@ -10,7 +10,10 @@ extra-source-files:
   - LICENSE
   - VERSION
 dependencies:
+  - acts
   - base
+  - finitary
+  - finite-typelits
   - groups
   - modular-arithmetic
   - semigroupoids
