@@ -3,14 +3,15 @@
 {-# LANGUAGE DerivingStrategies #-}
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE FunctionalDependencies #-}
-{-# LANGUAGE TypeOperators #-}
+-- {-# LANGUAGE TypeOperators #-}
 {-# LANGUAGE UnicodeSyntax #-}
 
 module Data.GIS where
 
-import Data.Finitary (Cardinality, Finitary (..))
+import Data.Act (Torsor (..))
+-- import Data.Finitary (Cardinality, Finitary (..))
 import Data.Finite (Finite)
-import Data.Group (Group (..), (~~))
+import Data.Group (Group (..)) -- , (~~))
 import Data.Monoid (Sum (..))
 import Data.Pitch (Pitch (..))
 import qualified Data.PitchClass.Chromatic as Chromatic
@@ -24,13 +25,16 @@ class (Group ivls) => GIS space ivls | space -> ivls where
   default ref :: (Bounded space) => space
   ref = minBound
 
-  int s t = label t ~~ label s
+  default int :: (Torsor ivls space) => space -> space -> ivls
+  int = (-->)
 
-  -- default label :: (Eq space) => space -> ivls
-  -- label s = if s == ref then mempty else int ref s
+  -- int s t = label t ~~ label s
 
-  default label :: (Finitary space, Finitary ivls, Cardinality space ~ Cardinality ivls) => space -> ivls
-  label = fromFinite . toFinite
+  -- default label :: (Finitary space, Finitary ivls, Cardinality space ~ Cardinality ivls) => space -> ivls
+  -- label = fromFinite . toFinite
+
+  default label :: (Eq space) => space -> ivls
+  label s = if s == ref then mempty else int ref s
 
 -- | Cyclic group of order 7.
 type ℤ₇ = Sum (Finite 7)

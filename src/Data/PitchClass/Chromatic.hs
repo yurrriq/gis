@@ -6,7 +6,7 @@
 module Data.PitchClass.Chromatic where
 
 import Data.Act (Act (..), Finitely (..), Torsor (..))
-import Data.Finitary (Finitary)
+import Data.Finitary (Finitary (..))
 import Data.Finite (Finite)
 import Data.Monoid (Sum (..))
 import GHC.Generics (Generic)
