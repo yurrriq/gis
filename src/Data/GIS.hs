@@ -1,20 +1,18 @@
 {-# LANGUAGE DataKinds #-}
 {-# LANGUAGE DefaultSignatures #-}
+{-# LANGUAGE DerivingStrategies #-}
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE FunctionalDependencies #-}
-{-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE TypeOperators #-}
-{-# LANGUAGE UndecidableInstances #-}
-{-# LANGUAGE UndecidableSuperClasses #-}
-{-# OPTIONS_GHC -Wno-orphans #-}
+{-# LANGUAGE UnicodeSyntax #-}
 
 module Data.GIS where
 
+import Data.Finitary (Cardinality, Finitary (..))
+import Data.Finite (Finite)
 import Data.Group (Group (..), (~~))
-import Data.Isomorphism (Iso (..), embed)
-import Data.Modular (Modulus, toMod, unMod, ℤ, type (/))
 import Data.Monoid (Sum (..))
-import Data.Pitch (Pitch)
+import Data.Pitch (Pitch (..))
 import qualified Data.PitchClass.Chromatic as Chromatic
 import qualified Data.PitchClass.Diatonic as Diatonic
 
@@ -23,54 +21,35 @@ class (Group ivls) => GIS space ivls | space -> ivls where
   int :: space -> space -> ivls
   label :: space -> ivls
 
-  default ref :: (Monoid space) => space
-  ref = mempty
+  default ref :: (Bounded space) => space
+  ref = minBound
 
   int s t = label t ~~ label s
 
-  default label :: (Eq space) => space -> ivls
-  label s = if s == ref then mempty else int ref s
+  -- default label :: (Eq space) => space -> ivls
+  -- label s = if s == ref then mempty else int ref s
+
+  default label :: (Finitary space, Finitary ivls, Cardinality space ~ Cardinality ivls) => space -> ivls
+  label = fromFinite . toFinite
+
+-- | Cyclic group of order 7.
+type ℤ₇ = Sum (Finite 7)
 
 -- pc-space
-instance GIS Chromatic.PitchClass (ℤ / 12) where
-  ref = Chromatic.C
-  label = embed isoℤ
+instance GIS Diatonic.PitchClass ℤ₇
+
+-- p-space
+instance GIS (Pitch Diatonic.PitchClass) (Sum Int) where
+  ref = Pitch (Diatonic.C, 0)
+  label (Pitch (pc, oct)) = (fromEnum pc +) . (7 *) <$> oct
+
+-- | Cyclic group of order 12.
+type ℤ₁₂ = (Sum (Finite 12))
+
+-- pc-space
+instance GIS Chromatic.PitchClass ℤ₁₂
 
 -- p-space
 instance GIS (Pitch Chromatic.PitchClass) (Sum Int) where
-  ref = (Chromatic.C, 0)
-  label (pc, oct) = Sum (fromEnum pc + 12 * oct)
-
-instance GIS Diatonic.PitchClass (ℤ / 7) where
-  ref = Diatonic.C
-  label = embed isoℤ
-
-instance GIS (Pitch Diatonic.PitchClass) (Sum Int) where
-  ref = (Diatonic.C, 0)
-  label (pc, oct) = Sum (fromEnum pc + 7 * oct)
-
-class (Enum space, Modulus n) => Isoℤ space n where
-  isoℤ :: Iso (->) space (ℤ / n)
-  isoℤ = Iso (toMod . fromIntegral . fromEnum) (toEnum . fromInteger . unMod)
-
-instance Isoℤ Chromatic.PitchClass 12
-
-instance Isoℤ Diatonic.PitchClass 7
-
-instance Semigroup (ℤ / 12) where
-  (<>) = (+)
-
-instance Monoid (ℤ / 12) where
-  mempty = 0
-
-instance Group (ℤ / 12) where
-  invert = negate
-
-instance Semigroup (ℤ / 7) where
-  (<>) = (+)
-
-instance Monoid (ℤ / 7) where
-  mempty = 0
-
-instance Group (ℤ / 7) where
-  invert = negate
+  ref = Pitch (Chromatic.C, 0)
+  label (Pitch (pc, oct)) = (fromEnum pc +) . (12 *) <$> oct
