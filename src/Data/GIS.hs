@@ -1,59 +1,25 @@
 {-# LANGUAGE DataKinds #-}
 {-# LANGUAGE DefaultSignatures #-}
-{-# LANGUAGE DerivingStrategies #-}
-{-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE FunctionalDependencies #-}
--- {-# LANGUAGE TypeOperators #-}
-{-# LANGUAGE UnicodeSyntax #-}
+{-# LANGUAGE TypeOperators #-}
 
 module Data.GIS where
 
 import Data.Act (Torsor (..))
--- import Data.Finitary (Cardinality, Finitary (..))
-import Data.Finite (Finite)
+import Data.Finitary (Cardinality, Finitary (..), start)
 import Data.Group (Group (..)) -- , (~~))
-import Data.Monoid (Sum (..))
-import Data.Pitch (Pitch (..))
-import qualified Data.PitchClass.Chromatic as Chromatic
-import qualified Data.PitchClass.Diatonic as Diatonic
+import GHC.TypeNats (type (<=))
 
-class (Group ivls) => GIS space ivls | space -> ivls where
+class (Group ivls) => GIS ivls space | space -> ivls where
   ref :: space
   int :: space -> space -> ivls
   label :: space -> ivls
 
-  default ref :: (Bounded space) => space
-  ref = minBound
+  default ref :: (Finitary space, 1 <= Cardinality space) => space
+  ref = start
 
-  default int :: (Torsor ivls space) => space -> space -> ivls
-  int = (-->)
+  default int :: (Data.Act.Torsor ivls space) => space -> space -> ivls
+  int = (Data.Act.-->)
 
-  -- int s t = label t ~~ label s
-
-  -- default label :: (Finitary space, Finitary ivls, Cardinality space ~ Cardinality ivls) => space -> ivls
-  -- label = fromFinite . toFinite
-
-  default label :: (Eq space) => space -> ivls
-  label s = if s == ref then mempty else int ref s
-
--- | Cyclic group of order 7.
-type ℤ₇ = Sum (Finite 7)
-
--- pc-space
-instance GIS Diatonic.PitchClass ℤ₇
-
--- p-space
-instance GIS (Pitch Diatonic.PitchClass) (Sum Int) where
-  ref = Pitch (Diatonic.C, 0)
-  label (Pitch (pc, oct)) = (fromEnum pc +) . (7 *) <$> oct
-
--- | Cyclic group of order 12.
-type ℤ₁₂ = (Sum (Finite 12))
-
--- pc-space
-instance GIS Chromatic.PitchClass ℤ₁₂
-
--- p-space
-instance GIS (Pitch Chromatic.PitchClass) (Sum Int) where
-  ref = Pitch (Chromatic.C, 0)
-  label (Pitch (pc, oct)) = (fromEnum pc +) . (12 *) <$> oct
+  default label :: (Finitary space, Finitary ivls, Cardinality space ~ Cardinality ivls) => space -> ivls
+  label = fromFinite . toFinite
