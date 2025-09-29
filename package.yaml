@@ -21,6 +21,7 @@ dependencies:
   - tasty
   - tasty-discover
   - tasty-hunit
+  - template-haskell
 ghc-options:
   - -Wall
   - -Werror
