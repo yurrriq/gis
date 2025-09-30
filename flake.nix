@@ -18,7 +18,7 @@
       url = "github:cachix/git-hooks.nix";
     };
     nixpkgs.url = "github:nixos/nixpkgs";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/release-24.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/release-25.05";
     treefmt-nix = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:numtide/treefmt-nix";
@@ -51,11 +51,6 @@
         lib.composeManyExtensions
           (lib.attrValues
             (lib.filterAttrs (name: _: name != "default") self.overlays));
-
-      # FIXME: v2 works differently, I guess.
-      flake.overlays.treefmt = _final: prev: {
-        treefmt = prev.treefmt1;
-      };
 
       perSystem = { config, pkgs, self', system, ... }: {
         _module.args.pkgs = import inputs.nixpkgs {
