@@ -14,7 +14,6 @@ dependencies:
   - base
   - finitary
   - finite-typelits
-  - generic-data
   - groups
   - modular-arithmetic
   - semigroupoids
