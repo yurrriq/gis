@@ -1,11 +1,8 @@
-{-# LANGUAGE DataKinds #-}
 {-# LANGUAGE TypeApplications #-}
-{-# LANGUAGE UnicodeSyntax #-}
 
 module Test.GIS where
 
 import Data.GIS (int)
-import Data.PitchClass.Chromatic (C₁₂)
 import qualified Data.PitchClass.Chromatic as Chromatic
 import qualified Data.PitchClass.Diatonic as Diatonic
 import Test.Tasty (TestTree, testGroup)
@@ -54,7 +51,7 @@ test_lewin_2_1_3 =
   testGroup
     "pc-space examples (Lewin, 2.1.3)"
     [ testCase "int(8, 1) = 5" $
-        int @C₁₂ @Chromatic.PitchClass 8 1 @?= 5,
+        int @Chromatic.PitchClass 8 1 @?= 5,
       testCase "int(E, E) = 0" $
         int Chromatic.E Chromatic.E @?= 0,
       testCase "int(E, F) = 1" $

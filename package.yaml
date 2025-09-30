@@ -12,6 +12,7 @@ extra-source-files:
 dependencies:
   - acts
   - base
+  - extra
   - finitary
   - finite-typelits
   - groups
