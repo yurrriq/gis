@@ -1,20 +1,31 @@
-{-# LANGUAGE DataKinds #-}
+{-# LANGUAGE RankNTypes #-}
+{-# LANGUAGE ScopedTypeVariables #-}
+{-# LANGUAGE StandaloneDeriving #-}
+{-# LANGUAGE TypeApplications #-}
 
 module Data.Pitch where
 
-import Data.Finitary (Finitary)
-import Data.Finite (Finite)
+import Data.Bifoldable (bisum)
+import Data.Bifunctor (bimap)
+import Data.Finitary (Finitary (..))
 import Data.Monoid (Sum (..))
+import Data.Proxy (Proxy (..))
+import GHC.TypeLits (natVal)
 
--- | Cyclic group of order 7.
-type C₇ = Sum (Finite 7)
-
--- | Cyclic group of order 12.
-type C₁₂ = Sum (Finite 12)
-
-type Octave = Sum Int
+type Octave = Int
 
 newtype (Finitary a) => Pitch a = Pitch {getPitch :: (a, Octave)}
 
+deriving instance (Eq a) => Eq (Pitch a)
+
 instance (Finitary a, Show a) => Show (Pitch a) where
-  show (Pitch (pc, oct)) = show pc <> show (getSum oct)
+  show = uncurry (<>) . bimap show show . getPitch
+
+labelPitch :: forall a. (Finitary a) => Pitch a -> Sum Int
+labelPitch =
+  Sum
+    . bisum
+    . bimap
+      (fromIntegral . toFinite)
+      (fromIntegral (natVal (Proxy @(Cardinality a))) *)
+    . getPitch
