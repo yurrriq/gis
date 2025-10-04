@@ -1,0 +1,6 @@
+packages: .
+
+documentation: true
+haddock-html-location: https://hackage.haskell.org/package/$pkgid/docs/
+haddock-hyperlink-source: True
+haddock-quickjump: True
