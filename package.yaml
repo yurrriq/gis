@@ -16,11 +16,6 @@ dependencies:
   - finitary
   - finite-typelits
   - groups
-  - modular-arithmetic
-  - semigroupoids
-  - tasty
-  - tasty-discover
-  - tasty-hunit
   - template-haskell
 ghc-options:
   - -Wall
@@ -38,3 +33,9 @@ tests:
     source-dirs: test
     dependencies:
       - GIS
+      - hedgehog
+      - hedgehog-classes
+      - tasty
+      - tasty-discover
+      - tasty-hedgehog
+      - tasty-hunit
