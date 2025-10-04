@@ -1,12 +1,39 @@
+{-# LANGUAGE FlexibleContexts #-}
+{-# LANGUAGE RankNTypes #-}
 {-# LANGUAGE TypeApplications #-}
 
 module Test.GIS where
 
-import Data.GIS (int)
+import Control.Monad (guard, void)
+import Data.Finitary (inhabitants)
+import Data.GIS (GIS (int), IntervalOf)
+import Data.Pitch (Pitch (..))
 import qualified Data.PitchClass.Chromatic as Chromatic
 import qualified Data.PitchClass.Diatonic as Diatonic
+import Hedgehog (Gen, Property, forAll, property, withDiscards)
+import Hedgehog.Classes (LawContext (..), Laws (..), contextualise, heqCtx, lawsCheck)
+import qualified Hedgehog.Gen as Gen
+import qualified Hedgehog.Range as Range
 import Test.Tasty (TestTree, testGroup)
 import Test.Tasty.HUnit (testCase, (@?=))
+
+test_gis_laws :: TestTree
+test_gis_laws =
+  testGroup
+    "Verify GIS laws"
+    [ testCase "diatonic pitch class" $
+        void . lawsCheck $
+          gisLaws genDiatonicPitchClass,
+      testCase "diatonic pitch" $
+        void . lawsCheck $
+          gisLaws genDiatonicPitch,
+      testCase "chromatic pitch class" $
+        void . lawsCheck $
+          gisLaws genChromaticPitchClass,
+      testCase "chromatic pitch" $
+        void . lawsCheck $
+          gisLaws genChromaticPitch
+    ]
 
 test_lewin_2_1_1 :: TestTree
 test_lewin_2_1_1 =
@@ -74,3 +101,79 @@ test_lewin_2_1_4 =
 
 -- test_lewin_2_1_5 :: TestTree
 -- test_lewin_2_1_5 = undefined
+
+gisLaws :: (Eq a, Eq (IntervalOf a), GIS a, Show a, Show (IntervalOf a)) => Gen a -> Laws
+gisLaws gen =
+  Laws
+    "GIS"
+    [ ("Condition A", gisConditionA gen),
+      ("Condition B", gisConditionB gen)
+    ]
+
+gisConditionA :: forall a. (Eq a, Eq (IntervalOf a), GIS a, Show a, Show (IntervalOf a)) => Gen a -> Property
+gisConditionA gen = property $ do
+  r <- forAll gen
+  s <- forAll gen
+  t <- forAll gen
+  let lhs = int r s <> int s t
+  let rhs = int r t
+  let ctx =
+        contextualise $
+          LawContext
+            { lawContextLawName = "Condition A",
+              lawContextTcName = "GIS",
+              lawContextLawBody = "int r s <> int s t ≡ int r t",
+              lawContextReduced = show lhs ++ " ≡ " ++ show rhs,
+              lawContextTcProp =
+                let showR = show r; showS = show s; showT = show t
+                 in unlines
+                      [ "int r s <> int s t ≡ int r t, where",
+                        "\tr = " ++ showR,
+                        "\ts = " ++ showS,
+                        "\tt = " ++ showT
+                      ]
+            }
+  heqCtx lhs rhs ctx
+
+gisConditionB :: forall a. (Eq a, Eq (IntervalOf a), GIS a, Show a, Show (IntervalOf a)) => Gen a -> Property
+gisConditionB gen = withDiscards 10000 $ property $ do
+  r <- forAll gen
+  s <- forAll gen
+  t <- forAll gen
+  let lhs = int r s
+  let rhs = int r t
+  guard (lhs == rhs)
+  let ctx =
+        contextualise $
+          LawContext
+            { lawContextLawName = "Condition B",
+              lawContextTcName = "GIS",
+              lawContextLawBody = "int r s ≡ int r t → s ≡ t",
+              lawContextReduced = show lhs ++ " ≡ " ++ show rhs,
+              lawContextTcProp =
+                unlines
+                  [ "int r s ≡ int r t ⇔  s ≡ t, where",
+                    "\tr = " ++ show r,
+                    "\ts = " ++ show s,
+                    "\tt = " ++ show t
+                  ]
+            }
+  heqCtx lhs rhs ctx
+
+genChromaticPitchClass :: Gen Chromatic.PitchClass
+genChromaticPitchClass = Gen.element inhabitants
+
+genDiatonicPitchClass :: Gen Diatonic.PitchClass
+genDiatonicPitchClass = Gen.element inhabitants
+
+genChromaticPitch :: Gen (Pitch Chromatic.PitchClass)
+genChromaticPitch = do
+  pc <- genChromaticPitchClass
+  oct <- Gen.int (Range.linear 0 10)
+  pure (Pitch (pc, oct))
+
+genDiatonicPitch :: Gen (Pitch Diatonic.PitchClass)
+genDiatonicPitch = do
+  pc <- genDiatonicPitchClass
+  oct <- Gen.int (Range.linear 0 10)
+  pure (Pitch (pc, oct))
