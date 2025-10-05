@@ -1,0 +1,23 @@
+package idris2-gis
+version = 0.1.0
+authors = "yurrriq"
+-- maintainers =
+license = "MIT"
+brief = "David Lewin's Generalized Interval Systems"
+-- readme =
+-- homepage =
+-- sourceloc =
+-- bugtracker =
+
+langversion >= 0.7.0
+
+depends = algebra
+        , contrib
+
+modules = Data.GIS
+
+-- main =
+
+-- executable = idris2-gis-tests
+
+sourcedir = "idris2"

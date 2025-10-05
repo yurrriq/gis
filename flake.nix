@@ -37,7 +37,8 @@
         ./nix/emacs.nix
         ./nix/gap.nix
         ./nix/haskell.nix
-        ./nix/idris.nix
+        # ./nix/idris.nix
+        ./nix/idris2.nix
       ];
 
       systems = [
@@ -74,7 +75,8 @@
               self'.devShells.emacs
               self'.devShells.gap
               self'.devShells.haskell
-              self'.devShells.idris
+              # self'.devShells.idris
+              self'.devShells.idris2
             ];
           };
         };

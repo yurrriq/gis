@@ -5,6 +5,7 @@
 /.elba/*
 !/.elba/config
 /.pre-commit-config.yaml
+/build/
 /dist-newstyle/
 /result*
 /target

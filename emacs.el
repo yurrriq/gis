@@ -63,15 +63,19 @@
   :demand
   :config (global-hl-todo-mode t))
 
+(use-package idris2-mode
+  :custom
+  (idris2-interpreter-flags '("-p" "algebra")))
+
 (use-package lsp-mode
-  :hook ((haskell-mode . lsp-deferred))
+  :hook ((haskell-mode idris-mode) . lsp-deferred)
   :commands (lsp lsp-deferred)
   :config
   (advice-add 'lsp :before #'direnv-update-environment)
   (setq lsp-modeline-code-actions-enable nil))
 
 (use-package lsp-ui
-  :hook (haskell-mode . lsp-ui-mode)
+  :hook ((haskell-mode idris2-mode) . lsp-ui-mode)
   :config
   (setq lsp-ui-doc-position 'bottom))
 
