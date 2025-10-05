@@ -43,12 +43,5 @@
         '';
       };
     };
-
-    treefmt = {
-      programs = {
-        hlint.enable = true;
-        ormolu.enable = true;
-      };
-    };
   };
 }
