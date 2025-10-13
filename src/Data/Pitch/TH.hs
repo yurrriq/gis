@@ -3,14 +3,14 @@
 
 -- |
 -- Module      : Data.Pitch.TH
--- Copyright   : (c) Eric Bailey, I2025
+-- Copyright   : (c) Eric Bailey, 2025
 --
 -- License     : MIT
 -- Maintainer  : eric@ericb.me
 -- Stability   : experimental
 -- Portability : POSIX
 --
--- Diatonic pc-space and p-space.
+-- Template Haskell for creating pattern synonyms for 'Pitch'es.
 module Data.Pitch.TH
   ( genPitchPatterns,
   )
