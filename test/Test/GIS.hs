@@ -4,7 +4,7 @@
 
 module Test.GIS where
 
-import Control.Monad (guard, void)
+import Control.Monad (guard)
 import Data.Finitary (inhabitants)
 import Data.GIS (GIS (int), IntervalOf)
 import Data.Pitch (Pitch (..))
@@ -15,25 +15,21 @@ import Hedgehog.Classes (LawContext (..), Laws (..), contextualise, heqCtx, laws
 import qualified Hedgehog.Gen as Gen
 import qualified Hedgehog.Range as Range
 import Test.Tasty (TestTree, testGroup)
-import Test.Tasty.HUnit (testCase, (@?=))
+import Test.Tasty.HUnit (assertBool, testCase, (@?=))
 
 test_gis_laws :: TestTree
 test_gis_laws =
   testGroup
     "Verify GIS laws"
-    [ testCase "diatonic pitch class" $
-        void . lawsCheck $
-          gisLaws genDiatonicPitchClass,
-      testCase "diatonic pitch" $
-        void . lawsCheck $
-          gisLaws genDiatonicPitch,
-      testCase "chromatic pitch class" $
-        void . lawsCheck $
-          gisLaws genChromaticPitchClass,
-      testCase "chromatic pitch" $
-        void . lawsCheck $
-          gisLaws genChromaticPitch
+    [ gisLawsCheck "diatonic pitch class" genDiatonicPitchClass,
+      gisLawsCheck "diatonic pitch" genDiatonicPitch,
+      gisLawsCheck "chromatic pitch class" genChromaticPitchClass,
+      gisLawsCheck "chromatic pitch" genChromaticPitch
     ]
+  where
+    gisLawsCheck name gen =
+      testCase name $
+        assertBool "unlawful" =<< lawsCheck (gisLaws gen)
 
 test_lewin_2_1_1 :: TestTree
 test_lewin_2_1_1 =

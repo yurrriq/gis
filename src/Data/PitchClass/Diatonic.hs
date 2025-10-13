@@ -22,9 +22,9 @@ module Data.PitchClass.Diatonic where
 import Data.Act (Act (..), Finitely (..), Torsor (..))
 import Data.Finitary (Finitary (fromFinite, toFinite))
 import Data.Finite (Finite)
-import Data.GIS (GIS (label), IntervalOf)
+import Data.GIS (IntervalOf)
 import Data.Monoid (Sum)
-import Data.Pitch (Pitch, labelPitch)
+import Data.Pitch (Pitch)
 import Data.Pitch.TH (genPitchPatterns)
 import GHC.Generics (Generic)
 
@@ -72,8 +72,3 @@ type C₇ = Sum (Finite 7)
 type instance IntervalOf (Pitch PitchClass) = Sum Int
 
 $(genPitchPatterns ''PitchClass)
-
--- | The 'GIS' @('PitchClass', (ℤ, +), 'Data.GIS.int')@ with @'label' =
--- 'labelPitch'@.
-instance GIS (Pitch PitchClass) where
-  label = labelPitch

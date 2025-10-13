@@ -23,6 +23,8 @@ import Data.Act (Torsor ((<--)))
 import Data.Finitary (Cardinality, Finitary (fromFinite, toFinite))
 import Data.Group (Group ((~~)))
 import Data.Kind (Type)
+import Data.Monoid (Sum (..))
+import Data.Pitch (Pitch (..), labelPitch)
 
 -- | A Generalized Interval System ('GIS') is a triple @(S, (G, ·), 'int')@
 -- where
@@ -69,9 +71,9 @@ class (Group (Interval space)) => GIS space where
 -- Generalized Interval System ('GIS').
 type family IntervalOf (space :: Type) :: Type
 
--- | A bounded musical @space@ with the same 'Cardinality' as a @'Group'
+-- | A bounded pitch class @space@ with the same 'Cardinality' as a @'Group'
 -- ('IntervalOf' space)@.
-type BoundedMusicalSpace space =
+type PitchClassSpace space =
   ( Bounded space,
     Finitary space,
     Finitary (IntervalOf space),
@@ -80,9 +82,23 @@ type BoundedMusicalSpace space =
     Torsor (IntervalOf space) space
   )
 
--- | For a bounded musical space \(S\) (@space@) with the same 'Cardinality' as
--- a 'Group' \(G\) (@'IntervalOf' space@), there exists a 'GIS' @(S, (G, ·),
+-- | For a pitch class space \(S\) (@space@) with the same 'Cardinality' as a
+-- 'Group' \(G\) (@'IntervalOf' space@), there exists a 'GIS' @(S, (G, ·),
 -- 'int')@ where @'ref' = 0@.
-instance {-# OVERLAPPABLE #-} (BoundedMusicalSpace space) => GIS space where
+instance {-# OVERLAPPABLE #-} (PitchClassSpace space) => GIS space where
   int s t = t <-- s
   label = fromFinite . toFinite
+
+-- | A bounded pitch class @space@ can be used to create a pitch space where
+-- intervals are representable in the group of integers under addition.
+type PitchSpace space =
+  ( Bounded space,
+    Finitary space,
+    IntervalOf (Pitch space) ~ Sum Int
+  )
+
+-- | For a pitch space \(S\) (@'Pitch' space@), where intervals are
+-- representable as integers, there exists a 'GIS' @(S, (ℤ, +), 'int')@, where
+-- pitches are labeled via 'labelPitch' and @'ref' = 0@.
+instance {-# OVERLAPPABLE #-} (PitchSpace space) => GIS (Pitch space) where
+  label = labelPitch
