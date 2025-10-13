@@ -52,15 +52,15 @@ class (Group (Interval space)) => GIS space where
   -- | Uniquely map a musical element to an element of the group of intervals.
   label :: space -> Interval space
 
-  -- | > 'ref' = 'minBound'
+  -- | @'ref' = 'minBound'@
   default ref :: (Bounded space) => space
   ref = minBound
 
-  -- | > 'int' s t = 'label' t '~~' 'label' s
+  -- | @'int' s t = 'label' t '~~' 'label' s@
   default int :: space -> space -> Interval space
   int s t = label t ~~ label s
 
-  -- | > 'label' = 'Data.GIS.int' 'ref'
+  -- | @'label' = 'int' 'ref'@
   default label :: (Eq space) => space -> Interval space
   label = int ref
 
