@@ -1,3 +1,4 @@
+{-# LANGUAGE ConstraintKinds #-}
 {-# LANGUAGE DataKinds #-}
 {-# LANGUAGE DefaultSignatures #-}
 {-# LANGUAGE FlexibleContexts #-}
@@ -23,24 +24,22 @@ import Data.Finitary (Cardinality, Finitary (fromFinite, toFinite))
 import Data.Group (Group ((~~)))
 import Data.Kind (Type)
 
--- | The type of intervals associated with a given musical space in a
--- Generalized Interval System ('GIS').
-type family IntervalOf (space :: Type) :: Type
-
 -- | A Generalized Interval System ('GIS') is a triple @(S, (G, ·), 'int')@
 -- where
 --
 --     * \(S\) is a musical space (@space@),
---     * \(G\) is the group of intervals (@Interval space@) for the 'GIS', and
+--     * \(G\) is the group of intervals (@'Interval' space@) for the GIS, and
 --     * 'int' is a function \(S \times S \to G\)
---       (@space -> space -> Interval space@)
+--       (@space -> space -> 'Interval' space@)
 --
 -- such that
 --
 --     (1) \(\forall r,s,t \in S, int(r,s) \cdot int(s,t) = int(r,t)\), and
 --     (2) \(\forall s \in S, g \in G, \exists! t \in S, int(s,t) = g\).
 class (Group (Interval space)) => GIS space where
+  -- | The group of intervals.
   type Interval space :: Type
+
   type Interval space = IntervalOf space
 
   -- | A referential element in the musical @space@.
@@ -66,20 +65,24 @@ class (Group (Interval space)) => GIS space where
 
   {-# MINIMAL label | int #-}
 
--- | For a bounded musical space \(S\) (@space@) with the same 'Cardinality' as
--- a 'Group' \(G\) (@'Interval' space@), there exists a 'GIS' @(S, (G, ·),
--- 'int')@ where @'ref' = 0@.
-instance
-  {-# OVERLAPPABLE #-}
-  ( Interval space ~ IntervalOf space,
-    Group (Interval space),
-    Bounded space,
+-- | The type of intervals associated with a given musical space in a
+-- Generalized Interval System ('GIS').
+type family IntervalOf (space :: Type) :: Type
+
+-- | A bounded musical @space@ with the same 'Cardinality' as a @'Group'
+-- ('IntervalOf' space)@.
+type BoundedMusicalSpace space =
+  ( Bounded space,
     Finitary space,
-    Torsor (Interval space) space,
-    Finitary (Interval space),
-    Cardinality space ~ Cardinality (Interval space)
-  ) =>
-  GIS space
-  where
+    Finitary (IntervalOf space),
+    Cardinality space ~ Cardinality (IntervalOf space),
+    Group (IntervalOf space),
+    Torsor (IntervalOf space) space
+  )
+
+-- | For a bounded musical space \(S\) (@space@) with the same 'Cardinality' as
+-- a 'Group' \(G\) (@'IntervalOf' space@), there exists a 'GIS' @(S, (G, ·),
+-- 'int')@ where @'ref' = 0@.
+instance {-# OVERLAPPABLE #-} (BoundedMusicalSpace space) => GIS space where
   int s t = t <-- s
   label = fromFinite . toFinite
